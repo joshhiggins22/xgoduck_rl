@@ -330,7 +330,7 @@ XgoduckRlCfg = replace(
 )
 
 
-from mjlab.managers import RewardTermCfg
+from mjlab.managers import EventTermCfg, RewardTermCfg
 from mjlab.managers.scene_entity_config import SceneEntityCfg
 
 from .xgoduck_physics import configure_xgoduck_physics
@@ -606,6 +606,50 @@ def _xgoduck_sitstand_cfg(**kwargs):
     return _retarget_xgoduck_sitstand(cfg)
 
 
+# Heel (rear sole edge) behind the foot-site centroid, MEASURED from
+# left/right_ankle.STL in the ankle frame: mesh x_min = -0.0099 m vs foot site
+# x = +0.022982865 m → 0.032883 m (both feet identical; see backward_support_margin).
+_XGODUCK_HEEL_OFFSET = 0.0329
+
+
+def _xgoduck_sitstand_carpet_cfg(**kwargs):
+    """SitStand on carpet: the baseline stack PLUS a whole-body backward
+    support-margin soft wall and per-episode ground-compliance DR.
+
+    The physical duck tips BACKWARD at the end of the rise (head-lift levers
+    the 40%-mass head back over the ~9 mm heel); the trunk-orientation upright
+    terms cannot see that. backward_support_margin penalizes the whole-body
+    CoM drifting back over the heel — 0 during the normal forward-leaning rise
+    (no attempt-tax), linear beyond the safe margin. The carpet event softens
+    the ground contact solref per episode so the policy trains across
+    hard-floor → soft-carpet compliance, not just friction/unevenness.
+    Built on the ROUGH variant; the shared sitstand defaults are untouched.
+    """
+    cfg = _xgoduck_sitstand_cfg(rough=True, **kwargs)
+    cfg.rewards["backward_support_margin"] = RewardTermCfg(
+        func=microduck_mdp.backward_support_margin,
+        weight=-2.0,
+        params={
+            "asset_cfg": SceneEntityCfg(
+                "robot", site_names=("left_foot", "right_foot"),
+            ),
+            "safe_margin": 0.005,
+            "heel_offset": _XGODUCK_HEEL_OFFSET,
+            "height_gate_low": XGODUCK_SIT_Z + 0.02,
+            "command_name": "twist",
+        },
+    )
+    cfg.events["carpet_compliance"] = EventTermCfg(
+        func=microduck_mdp.randomize_ground_compliance,
+        mode="reset",
+        params={
+            "time_constant_range": (0.02, 0.06),
+            "damping_ratio": 1.0,
+        },
+    )
+    return cfg
+
+
 register_mjlab_task(
     task_id="Mjlab-StandUp-Flat-XgoDuck",
     env_cfg=_xgoduck_standup_cfg(),
@@ -645,6 +689,13 @@ register_mjlab_task(
     task_id="Mjlab-SitStand-Rough-XgoDuck",
     env_cfg=_xgoduck_sitstand_cfg(rough=True),
     play_env_cfg=_xgoduck_sitstand_cfg(play=True, rough=True),
+    rl_cfg=XgoduckSitStandRlCfg,
+    runner_cls=MicroduckOnPolicyRunner,
+)
+register_mjlab_task(
+    task_id="Mjlab-SitStand-Carpet-XgoDuck",
+    env_cfg=_xgoduck_sitstand_carpet_cfg(),
+    play_env_cfg=_xgoduck_sitstand_carpet_cfg(play=True),
     rl_cfg=XgoduckSitStandRlCfg,
     runner_cls=MicroduckOnPolicyRunner,
 )

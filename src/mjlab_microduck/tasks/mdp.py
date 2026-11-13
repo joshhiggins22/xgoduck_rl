@@ -2798,6 +2798,72 @@ def com_over_support_foot(
     return gate * reward
 
 
+def backward_support_margin(
+    env: ManagerBasedRlEnv,
+    height_gate_low: float,
+    asset_cfg: SceneEntityCfg = _DEFAULT_ASSET_CFG,
+    safe_margin: float = 0.005,
+    heel_offset: float = 0.0329,
+    command_name: str = "twist",
+) -> torch.Tensor:
+    """Soft-wall penalty on the whole-body CoM drifting back over the heels.
+
+    The sit/stand upright stack (upright_linear / upright_while_tall /
+    posture_composite) only measures TRUNK orientation, so it is blind to the
+    whole-body CoM swinging rearward during the head-lift at the end of the
+    rise: the 320 g head (40% of the 798 g total) levers the CoM back over the
+    ~9 mm heel and the duck tips at ~8° pitch-back even with a vertical trunk.
+    This term measures the horizontal support margin directly:
+
+        forward      = trunk horizontal forward unit vector (root yaw)
+        heel_xy      = mean(left_foot, right_foot site xy) - heel_offset·forward
+        margin       = (com_xy - heel_xy) · forward        [m, + = ahead of heel]
+        penalty      = clamp(safe_margin - margin, min=0)  [m, 0 when safe]
+
+    SOFT WALL, not a boundary Gaussian: exactly 0 while the CoM stays at least
+    ``safe_margin`` ahead of the heel (the normal forward-leaning rise pays
+    nothing — no attempt-tax), then grows LINEARLY as the CoM drifts back, so
+    the gradient always points forward. Apply with a NEGATIVE weight.
+
+    Activity gate (both required, else returns 0):
+      - STAND commanded: the posture flag (twist command column 0) < 0.5.
+        SitStandCommand carries cmd = [sit_flag, 0, 0]; there is no .sit_flag
+        attribute, the flag is read via get_command like _posture_blend.
+      - Trunk z (relative to the env terrain origin, the _posture_height
+        convention) > ``height_gate_low`` — seated/resting-low states are free.
+
+    ``heel_offset`` is the rearward distance from the foot-site centroid to the
+    heel (rear edge of the sole). MEASURED from left/right_ankle.STL in the
+    ankle frame: mesh x_min = -0.0099 m, foot site x = +0.022982865 m →
+    0.032883 m ≈ 0.0329 m (both feet identical; sole-level verts agree).
+    """
+    asset: Entity = env.scene[asset_cfg.name]
+    com_xy = asset.data.root_com_pos_w[:, :2]
+    quat = asset.data.root_link_quat_w  # (N, 4) [w, x, y, z]
+    w, x, y, z = quat[:, 0], quat[:, 1], quat[:, 2], quat[:, 3]
+    yaw = torch.atan2(2.0 * (w * z + x * y), 1.0 - 2.0 * (y * y + z * z))
+    forward = torch.stack([torch.cos(yaw), torch.sin(yaw)], dim=-1)  # (N, 2) unit
+
+    # Heel reference: rear edge of the support feet, behind the site centroid.
+    find_sites = getattr(asset, "find_sites", None)
+    if find_sites is not None:
+        site_ids = find_sites(["left_foot", "right_foot"], preserve_order=True)[0]
+    else:  # manager-resolved fallback (asset_cfg must carry site_names)
+        site_ids = asset_cfg.site_ids
+    feet_xy = asset.data.site_pos_w[:, site_ids, :2]          # (N, 2, 2)
+    heel_xy = feet_xy.mean(dim=1) - heel_offset * forward     # (N, 2)
+
+    backward_margin = ((com_xy - heel_xy) * forward).sum(dim=-1)  # (N,)
+    penalty = torch.clamp(safe_margin - backward_margin, min=0.0)
+
+    sit_flag = env.command_manager.get_command(command_name)[:, 0]
+    trunk_z = torch.nan_to_num(
+        asset.data.root_link_pos_w[:, 2] - env.scene.terrain.env_origins[:, 2], nan=0.0
+    )
+    gate = ((sit_flag < 0.5) & (trunk_z > height_gate_low)).float()
+    return gate * penalty
+
+
 def _phase_pose_error(
     env: ManagerBasedRlEnv,
     asset_cfg: SceneEntityCfg,
@@ -3380,6 +3446,71 @@ def randomize_mass_and_inertia(
     # Apply same scale to both mass and inertia
     env.sim.model.body_mass[env_ids[:, None], body_indices] *= scales
     env.sim.model.body_inertia[env_ids[:, None], body_indices] *= scales.unsqueeze(-1)  # Scale all 3 inertia components
+
+
+@requires_model_fields("geom_solref")
+def randomize_ground_compliance(
+    env: ManagerBasedRlEnv,
+    env_ids: torch.Tensor,
+    time_constant_range: tuple[float, float] = (0.02, 0.06),
+    damping_ratio: float = 1.0,
+) -> None:
+    """Per-episode ground-contact compliance DR (carpet): randomize the terrain
+    geoms' solref time constant, NON-accumulating (absolute assignment).
+
+    Carpet's distinguishing feature is ground COMPLIANCE — heels sink into soft
+    ground — not friction or unevenness. MuJoCo's contact softness is set by
+    geom solref = [time_constant, damping_ratio]: a larger time constant is a
+    softer contact spring (the repo's rough-terrain _soften_terrain_contacts
+    uses the same knob statically, 0.02 → 0.04). This samples ONE time constant
+    per env per episode in ``time_constant_range`` and applies it to every
+    ground geom, so each world sits on its own uniform carpet patch. Default
+    range spans hard floor (0.02, MuJoCo default) to ~3× softer (0.06).
+
+    Ground geoms = every collision geom under the "terrain" body (generator
+    terrains) plus any plane geom (flat floor). mjlab has no stock solref DR
+    term in this repo's mjlab 1.3.0 usage, so this follows the custom
+    model-field event pattern (randomize_com / expand_bam_friction_fields):
+    the decorator declares geom_solref for per-world expansion, and the write
+    targets env.sim.model (num_worlds, ngeom, 2) like randomize_mass_and_inertia.
+    """
+    if env_ids is None:
+        env_ids = torch.arange(env.num_envs, device=env.device, dtype=torch.int)
+    else:
+        env_ids = env_ids.to(env.device, dtype=torch.int)
+    if len(env_ids) == 0:
+        return
+
+    # Resolve ground geom ids once from the nominal (single-world) model.
+    cache_attr = "_ground_compliance_geom_ids"
+    if not hasattr(env, cache_attr):
+        model = env.sim.mj_model
+        terrain_bodies = {
+            i for i, name in enumerate(model.body_names) if name == "terrain"
+        }
+        geom_ids = [
+            g
+            for g in range(model.ngeom)
+            if (model.geom_contype[g] or model.geom_conaffinity[g])
+            and (
+                int(model.geom_bodyid[g]) in terrain_bodies
+                or int(model.geom_type[g]) == mujoco.mjtGeom.mjGEOM_PLANE
+            )
+        ]
+        if not geom_ids:
+            raise ValueError("randomize_ground_compliance: no ground geoms found")
+        setattr(env, cache_attr, torch.tensor(geom_ids, device=env.device, dtype=torch.long))
+    geom_ids = getattr(env, cache_attr)
+
+    num_envs = len(env_ids)
+    num_geoms = len(geom_ids)
+    lo, hi = time_constant_range
+    # One carpet stiffness per env, broadcast over all ground geoms.
+    tc = torch.rand(num_envs, 1, device=env.device) * (hi - lo) + lo
+    solref = torch.empty(num_envs, num_geoms, 2, device=env.device)
+    solref[..., 0] = tc
+    solref[..., 1] = damping_ratio
+    env.sim.model.geom_solref[env_ids[:, None], geom_ids] = solref
 
 
 def standing_envs_curriculum(
