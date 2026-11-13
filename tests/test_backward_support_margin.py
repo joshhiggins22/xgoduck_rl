@@ -319,6 +319,122 @@ def test_carpet_registration_static():
     assert by_id["Mjlab-SitStand-Rough-XgoDuck"]["env_cfg"].func.id == "_xgoduck_sitstand_cfg"
 
 
+# ── Carpet-compliance DR event (realistic raw-MjModel mock) ─────────────────
+# Regression: the raw mujoco.MjModel has NO .body_names attribute. The mock
+# below deliberately omits it (names are only reachable via mj_id2name), so a
+# revert to model.body_names raises AttributeError and fails these tests.
+
+class _MockMujoco:
+    class mjtObj:
+        mjOBJ_BODY = 1
+
+    class mjtGeom:
+        mjGEOM_PLANE = 0
+        mjGEOM_HFIELD = 1
+        mjGEOM_MESH = 2
+
+    @staticmethod
+    def mj_id2name(model, objtype, i):
+        assert objtype == _MockMujoco.mjtObj.mjOBJ_BODY
+        return model._names[i]
+
+
+class _RawMjModel:
+    """Mimics mujoco.MjModel: no .body_names; names only via mj_id2name."""
+
+    def __init__(self):
+        self.nbody = 4
+        self.ngeom = 5
+        self._names = ["world", "terrain", "trunk_base", "left_ankle"]
+        # g0 terrain hfield, g1 floor plane, g2/g3 robot meshes, g4 visual-only.
+        self.geom_contype = [1, 1, 1, 1, 0]
+        self.geom_conaffinity = [1, 1, 1, 1, 0]
+        self.geom_bodyid = [1, 0, 2, 3, 2]
+        self.geom_type = [1, 0, 2, 2, 2]
+
+
+class _DRSimModel:
+    def __init__(self, nworld, ngeom):
+        self.geom_solref = torch.zeros(nworld, ngeom, 2)
+
+
+class _DREnv:
+    def __init__(self, nworld=3):
+        self.num_envs = nworld
+        self.device = "cpu"
+        mj = _RawMjModel()
+        self.sim = types.SimpleNamespace(
+            mj_model=mj, model=_DRSimModel(nworld, mj.ngeom)
+        )
+
+
+def _load_dr():
+    try:
+        from mjlab_microduck.tasks.mdp import randomize_ground_compliance
+        return randomize_ground_compliance
+    except Exception:
+        tree = ast.parse(_MDP_PATH.read_text())
+        func = next(
+            n for n in tree.body
+            if isinstance(n, ast.FunctionDef)
+            and n.name == "randomize_ground_compliance"
+        )
+        func.decorator_list = []  # @requires_model_fields is an mjlab marker
+        module = ast.Module(body=[func], type_ignores=[])
+        ast.fix_missing_locations(module)
+        ns = {"torch": torch, "mujoco": _MockMujoco, "ManagerBasedRlEnv": object}
+        exec(compile(module, str(_MDP_PATH), "exec"), ns)
+        return ns["randomize_ground_compliance"]
+
+
+randomize_ground_compliance = _load_dr()
+
+
+def test_dr_modifies_only_ground_geoms():
+    env = _DREnv(nworld=3)
+    randomize_ground_compliance(env, torch.arange(3))
+    sr = env.sim.model.geom_solref
+    assert torch.all(sr[:, 0, 0] >= 0.02) and torch.all(sr[:, 0, 0] <= 0.06)
+    assert torch.all(sr[:, 1, 0] >= 0.02) and torch.all(sr[:, 1, 0] <= 0.06)
+    # Robot meshes (2,3) and visual-only geom (4) untouched.
+    assert torch.all(sr[:, 2:, :] == 0.0)
+
+
+def test_dr_per_env_uniform_and_damping():
+    env = _DREnv(nworld=4)
+    randomize_ground_compliance(env, torch.arange(4), damping_ratio=1.0)
+    sr = env.sim.model.geom_solref
+    assert torch.all(sr[:, 0, 0] == sr[:, 1, 0])  # one stiffness per env
+    assert torch.all(sr[:, 0, 1] == 1.0) and torch.all(sr[:, 1, 1] == 1.0)
+
+
+def test_dr_non_accumulating():
+    env = _DREnv(nworld=2)
+    randomize_ground_compliance(env, torch.arange(2))
+    randomize_ground_compliance(env, torch.arange(2))  # second reset
+    sr = env.sim.model.geom_solref
+    assert torch.all(sr[:, 0, 0] >= 0.02) and torch.all(sr[:, 0, 0] <= 0.06)
+
+
+def test_dr_empty_env_ids_noop():
+    env = _DREnv(nworld=2)
+    randomize_ground_compliance(env, torch.tensor([], dtype=torch.long))
+    assert torch.all(env.sim.model.geom_solref == 0.0)
+
+
+def test_dr_no_ground_geoms_raises():
+    env = _DREnv(nworld=1)
+    mj = env.sim.mj_model
+    mj.geom_type = [2, 2, 2, 2, 2]       # all meshes
+    mj.geom_bodyid = [2, 2, 2, 3, 2]     # all under robot bodies
+    mj._names = ["world", "notterrain", "trunk_base", "left_ankle"]
+    try:
+        randomize_ground_compliance(env, torch.arange(1))
+    except ValueError:
+        return
+    raise AssertionError("expected ValueError when no ground geoms exist")
+
+
 if __name__ == "__main__":
     tests = [(n, f) for n, f in sorted(globals().items())
              if n.startswith("test_") and callable(f)]
