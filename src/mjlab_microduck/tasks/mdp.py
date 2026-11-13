@@ -3485,16 +3485,25 @@ def randomize_ground_compliance(
     cache_attr = "_ground_compliance_geom_ids"
     if not hasattr(env, cache_attr):
         model = env.sim.mj_model
+        # Raw MjModel has no .body_names; read names via mj_id2name. Ground is
+        # the terrain heightfield / floor plane, identified by geom type (robust
+        # to the terrain body's name) plus any geom under a body named "terrain".
         terrain_bodies = {
-            i for i, name in enumerate(model.body_names) if name == "terrain"
+            i
+            for i in range(model.nbody)
+            if mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_BODY, i) == "terrain"
         }
+        ground_types = (
+            int(mujoco.mjtGeom.mjGEOM_PLANE),
+            int(mujoco.mjtGeom.mjGEOM_HFIELD),
+        )
         geom_ids = [
             g
             for g in range(model.ngeom)
             if (model.geom_contype[g] or model.geom_conaffinity[g])
             and (
                 int(model.geom_bodyid[g]) in terrain_bodies
-                or int(model.geom_type[g]) == mujoco.mjtGeom.mjGEOM_PLANE
+                or int(model.geom_type[g]) in ground_types
             )
         ]
         if not geom_ids:
