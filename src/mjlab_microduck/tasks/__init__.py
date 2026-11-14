@@ -745,3 +745,10 @@ from mjlab_microduck.play_hook import maybe_inject_latest_checkpoint
 # After all task ids are registered: `play TASK` with no checkpoint flag
 # picks the latest local model_*.pt. Explicit wandb/file flags still win.
 maybe_inject_latest_checkpoint()
+
+# Warm-start: `train --agent.resume` on a checkpoint marked warm_start_actor_only
+# loads just the actor (fresh critic/optimizer/iteration) — used to fine-tune from
+# the official deployed policy. See warm_start_hook.py.
+from mjlab_microduck import warm_start_hook
+
+warm_start_hook.install()
