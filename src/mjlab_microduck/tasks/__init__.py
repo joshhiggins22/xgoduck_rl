@@ -650,6 +650,21 @@ def _xgoduck_sitstand_carpet_cfg(**kwargs):
     return cfg
 
 
+def _xgoduck_sitstand_carpet_warm_cfg(**kwargs):
+    """Carpet variant for WARM-START fine-tuning: same physics/rewards as the carpet
+    task but with the difficulty curriculum REMOVED so the environment is static.
+
+    A ramping curriculum is hostile to warm-start: while the actor is frozen for the
+    critic warm-up, the environment keeps getting harder (COM randomization / pushes /
+    tightening penalties ramp with total env-steps) and destabilizes the official
+    policy. A static, mild environment lets the critic learn a stable value function
+    before the actor is unfrozen to fine-tune.
+    """
+    cfg = _xgoduck_sitstand_carpet_cfg(**kwargs)
+    cfg.curriculum = {}
+    return cfg
+
+
 register_mjlab_task(
     task_id="Mjlab-StandUp-Flat-XgoDuck",
     env_cfg=_xgoduck_standup_cfg(),
@@ -696,6 +711,13 @@ register_mjlab_task(
     task_id="Mjlab-SitStand-Carpet-XgoDuck",
     env_cfg=_xgoduck_sitstand_carpet_cfg(),
     play_env_cfg=_xgoduck_sitstand_carpet_cfg(play=True),
+    rl_cfg=XgoduckSitStandRlCfg,
+    runner_cls=MicroduckOnPolicyRunner,
+)
+register_mjlab_task(
+    task_id="Mjlab-SitStand-CarpetWarm-XgoDuck",
+    env_cfg=_xgoduck_sitstand_carpet_warm_cfg(),
+    play_env_cfg=_xgoduck_sitstand_carpet_warm_cfg(play=True),
     rl_cfg=XgoduckSitStandRlCfg,
     runner_cls=MicroduckOnPolicyRunner,
 )
