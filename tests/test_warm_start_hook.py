@@ -54,5 +54,24 @@ class CriticWarmupItersTest(unittest.TestCase):
         self.assertEqual(critic_warmup_iters(ck), 0)
 
 
+class InfosNoneEdgeCaseTest(unittest.TestCase):
+    """rsl_rl save() writes infos=None; must not crash (Argon review blocker #1)."""
+
+    def test_load_cfg_infos_none_no_crash(self):
+        self.assertIsNone(warm_start_load_cfg({"infos": None}, None))
+
+    def test_warmup_infos_none_no_crash(self):
+        self.assertEqual(critic_warmup_iters({"infos": None}), 0)
+
+    def test_load_cfg_missing_infos_key(self):
+        self.assertIsNone(warm_start_load_cfg({}, None))
+
+    def test_warmup_missing_infos_key(self):
+        self.assertEqual(critic_warmup_iters({}), 0)
+
+    def test_warmstart_infos_none_not_actor_only(self):
+        self.assertIsNone(warm_start_load_cfg({"infos": None}, None))
+
+
 if __name__ == "__main__":
     unittest.main()
