@@ -25,9 +25,13 @@ _HLS1910_JSON: Path = _ROBOT_DIR / "params" / "1910_m6.json"
 
 XGODUCK_WALK_XML: Path = _ROBOT_DIR / "robot_walk.xml"
 XGODUCK_ALLCOLLISIONS_XML: Path = _ROBOT_DIR / "robot_allcollisions.xml"
+# Heel-sole extension variant: +15 mm rearward heel clip on both ankles
+# (backward support margin ~4 mm -> ~19 mm). See duck-heel/MUJOCO_INTEGRATION.md.
+XGODUCK_ALLCOLLISIONS_HEEL_XML: Path = _ROBOT_DIR / "robot_allcollisions_heel.xml"
 
 assert XGODUCK_WALK_XML.exists(), f"XML not found: {XGODUCK_WALK_XML}"
 assert XGODUCK_ALLCOLLISIONS_XML.exists(), f"XML not found: {XGODUCK_ALLCOLLISIONS_XML}"
+assert XGODUCK_ALLCOLLISIONS_HEEL_XML.exists(), f"XML not found: {XGODUCK_ALLCOLLISIONS_HEEL_XML}"
 assert _HLS1910_JSON.exists(), f"HLS1910 BAM params not found: {_HLS1910_JSON}"
 
 # Trunk z at XGODUCK STAND (hip_pitch/ankle ±22°) so soles sit 1 mm above the floor.
@@ -124,6 +128,13 @@ def get_standup_spec() -> mujoco.MjSpec:
     return _disable_unnamed_geoms(mujoco.MjSpec.from_file(str(XGODUCK_ALLCOLLISIONS_XML)))
 
 
+def get_standup_heel_spec() -> mujoco.MjSpec:
+    """Standup model with the +15 mm heel-sole clip on both ankles."""
+    return _disable_unnamed_geoms(
+        mujoco.MjSpec.from_file(str(XGODUCK_ALLCOLLISIONS_HEEL_XML))
+    )
+
+
 def get_roulade_spec() -> mujoco.MjSpec:
     """Full-body contacts, excluding three overlapping CAD joint housings."""
     spec = get_standup_spec()
@@ -155,6 +166,33 @@ XGODUCK_STANDUP_ROBOT_CFG = EntityCfg(
     spec_fn=get_standup_spec,
     init_state=XGODUCK_HOME_FRAME,
     collisions=(XGODUCK_COLLISION,),
+    articulation=EntityArticulationInfoCfg(
+        actuators=(actuators,),
+        soft_joint_pos_limit_factor=0.9,
+    ),
+)
+
+# Heel-clip variant: same as standup but the heel extension geoms get the same
+# frictional, priority contact as the feet so they actually support the robot.
+_FOOT_OR_HEEL = r"^(left|right)_(foot|heel)_collision$"
+XGODUCK_HEEL_COLLISION = CollisionCfg(
+    geom_names_expr=[".*_collision"],
+    contype={
+        r"^(trunk_collision|head_collision)$": 3,
+        ".*_collision": 1,
+    },
+    conaffinity={
+        r"^(trunk_collision|head_collision)$": 2,
+        ".*_collision": 0,
+    },
+    condim={_FOOT_OR_HEEL: 3, ".*_collision": 1},
+    priority={_FOOT_OR_HEEL: 1},
+    friction={_FOOT_OR_HEEL: (1.0,)},
+)
+XGODUCK_STANDUP_HEEL_ROBOT_CFG = EntityCfg(
+    spec_fn=get_standup_heel_spec,
+    init_state=XGODUCK_HOME_FRAME,
+    collisions=(XGODUCK_HEEL_COLLISION,),
     articulation=EntityArticulationInfoCfg(
         actuators=(actuators,),
         soft_joint_pos_limit_factor=0.9,

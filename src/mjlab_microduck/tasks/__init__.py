@@ -289,6 +289,7 @@ import math
 from mjlab_microduck.robot.xgoduck_constants import (
     XGODUCK_SIT_Z,
     XGODUCK_STAND_Z,
+    XGODUCK_STANDUP_HEEL_ROBOT_CFG,
     XGODUCK_STANDUP_ROBOT_CFG,
     XGODUCK_WALK_ROBOT_CFG,
     XGODUCK_WALK_STAND_Z,
@@ -665,6 +666,28 @@ def _xgoduck_sitstand_carpet_warm_cfg(**kwargs):
     return cfg
 
 
+# Heel-clip geometry: stock heel x_min -9.9 mm -> -24.9 mm, so the reward's
+# heel_offset (foot_site_x - heel_x_min) grows 32.9 mm -> 47.9 mm.
+_XGODUCK_HEEL_OFFSET_EXTENDED = _XGODUCK_HEEL_OFFSET + 0.015
+
+
+def _xgoduck_sitstand_carpet_heel_cfg(**kwargs):
+    """Carpet warm-start variant WITH the +15 mm heel-sole clip fitted.
+
+    Same static (curriculum-free) carpet env as CarpetWarm, but the robot carries
+    the printed heel extension and the backward-support-margin reward uses the
+    extended heel_offset. This is the sim counterpart of the physical heel fix:
+    the support polygon reaches ~15 mm further back, so the head-lift at the end
+    of the rise no longer levers the CoM past the heel.
+    """
+    cfg = _xgoduck_sitstand_carpet_warm_cfg(**kwargs)
+    cfg.scene.entities["robot"] = XGODUCK_STANDUP_HEEL_ROBOT_CFG
+    cfg.rewards["backward_support_margin"].params["heel_offset"] = (
+        _XGODUCK_HEEL_OFFSET_EXTENDED
+    )
+    return cfg
+
+
 register_mjlab_task(
     task_id="Mjlab-StandUp-Flat-XgoDuck",
     env_cfg=_xgoduck_standup_cfg(),
@@ -718,6 +741,13 @@ register_mjlab_task(
     task_id="Mjlab-SitStand-CarpetWarm-XgoDuck",
     env_cfg=_xgoduck_sitstand_carpet_warm_cfg(),
     play_env_cfg=_xgoduck_sitstand_carpet_warm_cfg(play=True),
+    rl_cfg=XgoduckSitStandRlCfg,
+    runner_cls=MicroduckOnPolicyRunner,
+)
+register_mjlab_task(
+    task_id="Mjlab-SitStand-CarpetHeel-XgoDuck",
+    env_cfg=_xgoduck_sitstand_carpet_heel_cfg(),
+    play_env_cfg=_xgoduck_sitstand_carpet_heel_cfg(play=True),
     rl_cfg=XgoduckSitStandRlCfg,
     runner_cls=MicroduckOnPolicyRunner,
 )
