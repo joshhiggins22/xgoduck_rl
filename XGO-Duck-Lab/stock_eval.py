@@ -24,6 +24,8 @@ def evaluate(
     sit_dwell=0.0,
     pose_handoff=False,
     sitstand_onnx=None,
+    walk_onnx=None,
+    rise_push=0.0,
 ):
     """Run a fixed command from reset; optionally switch SitStand -> Walk on a timer."""
     if duration_s <= 0 or (
@@ -34,12 +36,18 @@ def evaluate(
         raise ValueError("A sit dwell starts from stand with the SitStand policy.")
     if pose_handoff and (handoff_s is not None or model_name != "sitstand"):
         raise ValueError("Pose-based handoff applies to sitstand and cannot be combined with a timer.")
+    if not np.isfinite(rise_push) or rise_push < 0:
+        raise ValueError("Rise push must be a nonnegative finite impulse per unit mass.")
+    if rise_push and duration_s < 0.30:
+        raise ValueError("The rise push runs from 0.20 to 0.30 seconds after Stand.")
     env = DuckSitStandEnv(foot=foot, surface=surface, start=start, episode_s=duration_s + sit_dwell)
     runtime = ROOT / "runtime"
 
     def model_path(name):
         if name == "sitstand" and sitstand_onnx is not None:
             return Path(sitstand_onnx)
+        if name == "walk" and walk_onnx is not None:
+            return Path(walk_onnx)
         return runtime / f"xgoduck_{name}.onnx"
 
     def load(name, gain):
@@ -68,7 +76,20 @@ def evaluate(
             seat_confirmed = None if sit_dwell == 0 else False
             rise_streak = 0.0
             dt = env.dt * env.decimation
+            wrench = env.data.xfrc_applied[env.trunk]
+            wrench[:] = 0
+            pushed_ticks = 0
             while True:
+                if rise_push:
+                    stand_tick = round((env.data.time - sit_dwell) / dt)
+                    if stand_tick == round(0.20 / dt):
+                        heading = env.data.xmat[env.trunk].reshape(3, 3)[:2, 0]
+                        force = rise_push * env.model.body_subtreemass[env.trunk] / 0.10
+                        wrench[:2] = -force * heading / np.linalg.norm(heading)
+                    if stand_tick == round(0.30 / dt):
+                        wrench[:] = 0
+                    if np.any(wrench[:2]):
+                        pushed_ticks += 1
                 sitting = env.data.time + 1e-9 < sit_dwell
                 if walk is not None and not switched and not sitting:
                     elapsed = float(env.data.time) - sit_dwell
@@ -114,6 +135,7 @@ def evaluate(
                     surface=reset["surface"],
                     seconds=round(float(env.data.time), 4),
                     fell=info["fell"],
+                    push_applied_s=round(pushed_ticks * dt, 3),
                     first_upright_s=first_stable,
                     longest_upright_s=round(max_streak, 3),
                     final_upright_s=round(rise_streak, 3),
@@ -140,6 +162,7 @@ def evaluate(
         foot=foot,
         surface=surface,
         start=start,
+        rise_push_Ns_per_kg=rise_push,
         duration_s=duration_s,
         policy=model_name,
         sitstand_override=str(sitstand_onnx) if sitstand_onnx else None,
@@ -179,6 +202,15 @@ def main():
         action="store_true",
         help="Switch after three 50 Hz checks with tilt ≤15° and both knees <25°; stop on a 3 s timeout.",
     )
+    p.add_argument(
+        "--walk-onnx", type=Path, help="Optional Walk actor used after handoff or during a Walk trial."
+    )
+    p.add_argument(
+        "--rise-push",
+        type=float,
+        default=0.0,
+        help="Backward torso impulse in N·s/kg over 0.10 s, starting 0.20 s after Stand.",
+    )
     p.add_argument("--scale", type=float, default=1.0, help="Initial policy action multiplier.")
     p.add_argument("--seconds", type=float, default=6.0)
     p.add_argument("--seed", type=int, default=1000)
@@ -199,6 +231,8 @@ def main():
         sit_dwell=args.sit_dwell,
         pose_handoff=args.pose_handoff,
         sitstand_onnx=args.sitstand_onnx,
+        walk_onnx=args.walk_onnx,
+        rise_push=args.rise_push,
     )
     payload = json.dumps(result, indent=2)
     if args.json:

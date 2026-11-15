@@ -6,6 +6,8 @@ This lab runs the V2 duck on a CPU. It trains the zero-command rise and standing
 
 **On another Mac or after moving the directory**, unpack the portable archive and run `./setup.sh` from this folder using CPython 3.12. Set `XGO_PYTHON` to the full interpreter path if needed. The installed virtual environment in the original folder uses absolute paths. The archive carries source, pretrained models, robot meshes and results. Python dependencies download during installation. For an exact Intel Mac reinstall, the full tested set is in `requirements-intel-mac.lock`. Neither an Arduino connection nor a cloud account is required.
 
+The [stock-foot robot trial guide](ROBOT-TRIAL.md) includes the model file, the correct runtime slot, backup and restore steps. The November Walk reference at `runtime/walk-4ce3315c.onnx` matches the later feedback archive. [Pinned Walk source](https://github.com/LuwuDynamics/xgoduck_runtime_arduino/blob/4ce3315c86190a632f4d75a2464a4ed31c9af69a/python/xgoduck_walk.onnx).
+
 ## Run an experiment
 
 Run the following in Terminal **from the lab folder**. A new `--out` for training protects earlier checkpoints.

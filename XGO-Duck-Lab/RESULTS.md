@@ -2,6 +2,28 @@
 
 Start with the stock V2 feet for a duck that struggles to rise from sitting. The Mac-trained stock-foot actor improved the rise on unseen simulated starts and on a commanded Sit → Stand cycle. The extended heel addresses a different failure. It gave the standing duck more margin against a backward push, and it required a different maneuver to rise from a deep crouch.
 
+## Choosing a stock-foot policy for a robot trial
+
+The [stock PPO SitStand](runs/stock-49k/policy.onnx) accepts the original 61-value observation and outputs 14 joint offsets. The November Uno Q Python loader loaded and warmed this file on the Mac. For these comparisons the robot starts upright, receives Sit for three seconds, and then receives Stand. A 0.10-second rearward pulse at the torso begins 0.20 s after Stand. Both controllers keep their sensor history and switch to the same November Walk model when the measured pose is ready.
+
+| SitStand action scale | Backward impulse / mass (N·s/kg) | Factory SitStand | Stock PPO SitStand |
+| --- | ---: | ---: | ---: |
+| 1.0 | 0.35 | 0/12 | 12/12 |
+| 1.0 | 0.75 | 0/12 | 1/12 |
+| 1.1 | 0.35 | 12/12 | 12/12 |
+| 1.1 | 0.75 | 2/12 | 9/12 |
+
+All 12 paired seeds (7500–7511) achieved a measured sit before Stand and received the full push. A pass requires the final second upright without a fall. These outcomes depend on the timing, force, scale and simulated carpet. The board's installed controller and settings remain to be checked. [Scale 1.0 episodes](results/stock-backward-rise.json) · [Scale 1.1 episodes](results/stock-backward-rise-gain11.json) · [Trial and rollback on the robot](ROBOT-TRIAL.md)
+
+When SitStand was kept active continuously after a standing reset, the PPO also recovered more often at 0.75 N·s/kg. With scale 1.0 it recovered in 10/12 trials versus 0/12 for the factory actor. Both scored 0/12 at 1.0 N·s/kg. The controller usually switches to Walk before a push this late would occur. [Factory standing trials](results/stock-push-sitstand-factory.json) · [PPO standing trials](results/stock-push-sitstand-ppo.json)
+
+To reproduce the 0.35 N·s/kg comparison from the lab directory, run both commands with the same seed, duration, gain and Walk model.
+
+```sh
+.venv/bin/python stock_eval.py --foot v2-stock --surface carpet --start stand --sit-dwell 3 --pose-handoff --rise-push .35 --scale 1.0 --seed 7500 --trials 12 --walk-onnx runtime/walk-4ce3315c.onnx
+.venv/bin/python stock_eval.py --foot v2-stock --surface carpet --start stand --sit-dwell 3 --pose-handoff --rise-push .35 --scale 1.0 --seed 7500 --trials 12 --walk-onnx runtime/walk-4ce3315c.onnx --sitstand-onnx runs/stock-49k/policy.onnx
+```
+
 ## Stock V2 feet
 
 The factory SitStand ONNX initialized the PPO actor. Two CPU workers trained on a mixture of hard and simulated carpet for 49,152 samples in 165 seconds on this Intel Mac. Both actors received identical seeds, servo filtering and timing. A successful six-second episode ended with at least one continuous second upright and no earlier fall.

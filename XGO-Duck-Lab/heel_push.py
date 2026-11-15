@@ -75,9 +75,17 @@ def episode(env, actor, seed, specific_impulse):
     )
 
 
-def benchmark(policy, seeds, mass_delta=True, impulses=IMPULSES, candidates=("v2-heel15",)):
+def benchmark(
+    policy,
+    seeds,
+    mass_delta=True,
+    impulses=IMPULSES,
+    candidates=("v2-heel15",),
+    policy_file=None,
+    scale=1.0,
+):
     seeds = list(seeds)
-    path = ROOT / "runtime" / f"xgoduck_{policy}.onnx"
+    path = Path(policy_file) if policy_file else ROOT / "runtime" / f"xgoduck_{policy}.onnx"
     rows = []
     for foot in ("v2-stock", *candidates):
         env = DuckSitStandEnv(
@@ -87,7 +95,7 @@ def benchmark(policy, seeds, mass_delta=True, impulses=IMPULSES, candidates=("v2
             episode_s=SETTLE_S + PUSH_S + AFTER_S,
             mass_delta=mass_delta,
         )
-        actor = StockPolicy(env.model, ROOT / "runtime", path)
+        actor = StockPolicy(env.model, ROOT / "runtime", path, scale=scale)
         try:
             for impulse in impulses:
                 cases = [episode(env, actor, seed, impulse) for seed in seeds]
@@ -129,6 +137,8 @@ def benchmark(policy, seeds, mass_delta=True, impulses=IMPULSES, candidates=("v2
     return dict(
         candidates=list(candidates),
         policy=policy,
+        policy_file=path.name,
+        scale=scale,
         policy_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
         seeds=seeds,
         surface="carpet",
@@ -152,6 +162,11 @@ if __name__ == "__main__":
         choices=[v for v in VARIANTS if v.startswith("v2-heel")],
         default=["v2-heel15"],
     )
+    parser.add_argument("--stock-only", action="store_true", help="Test the original V2 feet alone.")
+    parser.add_argument(
+        "--policy-file", type=Path, help="Use this 61-input, 14-output ONNX for the complete trial."
+    )
+    parser.add_argument("--scale", type=float, default=1.0, help="Runtime action multiplier.")
     parser.add_argument("--seed", type=int, default=2100)
     parser.add_argument("--trials", type=int, default=12)
     parser.add_argument("--geometry-only", action="store_true")
@@ -177,7 +192,9 @@ if __name__ == "__main__":
         range(args.seed, args.seed + args.trials),
         not args.geometry_only,
         args.impulses,
-        args.candidate,
+        () if args.stock_only else args.candidate,
+        args.policy_file,
+        args.scale,
     )
     args.json.parent.mkdir(parents=True, exist_ok=True)
     args.json.write_text(json.dumps(result, indent=2) + "\n")
