@@ -78,3 +78,28 @@ restore_duck_model
 ```
 
 Confirm **Inference only** and feedback after the restart. The same process works for `duck_slot=xgoduck_walk.onnx` after a Walk-only trial.
+
+## If the duck gets upright and then tips backward
+
+Once Stand switches to Walk, the Walk model controls balance even with the joystick centered. A second [stock-foot Walk candidate](runs/stock-walk-recovery-stress/walk.onnx) starts from the November archive's Walk weights and adds a response when the duck begins pitching backward at zero movement command. It uses the same single-input interface. The simulation results and failure cases are in the [Walk experiment notes](runs/stock-walk-recovery-stress/README.md). Physical walking and recovery remain unverified.
+
+Try this file in a separate session with the original SitStand restored. Compare the installed Walk SHA-256 against its training base, `1fc079512fe3fe23e274e7a9d8c9ad007e88439f0385ecf20c9596e57886249f`. If they differ, the swap would also change the underlying gait. Keep the installed Walk for the first SitStand trial. With torque off, make a new original-pair backup using the steps above.
+
+From the Mac lab directory, stage the Walk file after verifying its digest.
+
+```sh
+duck_board=arduino@xgoduck1
+shasum -a 256 runs/stock-walk-recovery-stress/walk.onnx
+scp runs/stock-walk-recovery-stress/walk.onnx "$duck_board:duck-walk-trial.onnx"
+```
+
+In the board shell with the backup path and functions above, select only the Walk slot. This checks the installed base before changing it.
+
+```sh
+duck_slot=xgoduck_walk.onnx
+duck_staged="$HOME/duck-walk-trial.onnx"
+duck_hash=66d4f875a140c2bfed31d232528cb2b45404cbb24acf3cd183f5fc1bc9cbfd92
+printf '%s  %s\n' 1fc079512fe3fe23e274e7a9d8c9ad007e88439f0385ecf20c9596e57886249f "$duck_project/python/$duck_slot" | sha256sum -c - && install_duck_model
+```
+
+Check the restarted container and feedback as above. With support available, try a stationary stand with the joystick centered. Record whether any tip starts before or after the switch. Restore using `duck_slot=xgoduck_walk.onnx` and `restore_duck_model` with torque off.

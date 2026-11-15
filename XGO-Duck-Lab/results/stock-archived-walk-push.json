@@ -1,0 +1,793 @@
+{
+  "candidates": [],
+  "policy": "walk",
+  "policy_file": "walk-4ce3315c.onnx",
+  "scale": 1.0,
+  "policy_sha256": "1fc079512fe3fe23e274e7a9d8c9ad007e88439f0385ecf20c9596e57886249f",
+  "seeds": [
+    7400,
+    7401,
+    7402,
+    7403,
+    7404,
+    7405,
+    7406,
+    7407
+  ],
+  "surface": "carpet",
+  "foot_added_mass_estimate": true,
+  "settle_s": 2.0,
+  "pulse_s": 0.1,
+  "after_s": 3.0,
+  "protocol": "Zero command. At t=2 s screen for >=0.4 s continuously upright. Apply a constant force backward along initial push-time trunk heading at trunk COM for 0.10 s. Recover when no fall and >=1 s continuously upright at t=5.10 s.",
+  "thresholds": "upright: z>=0.124 m, tilt<15 deg, both knees <0.40 rad magnitude; fall: z<0.052 m or tilt>65 deg",
+  "groups": [
+    {
+      "foot": "v2-stock",
+      "impulse_per_mass_m_s": 0.0,
+      "counts": {
+        "recovered": 8
+      },
+      "trials": [
+        {
+          "seed": 7400,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.037736680896838924,
+            "friction": 1.068962122815957
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 5.1,
+          "elapsed_s": 5.1,
+          "issue_force_N": 0.0,
+          "delivered_impulse_Ns": 0.0,
+          "pre_tilt_deg": 0.1589369825756233,
+          "post_peak_tilt_deg": 0.464
+        },
+        {
+          "seed": 7401,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.05231531092488807,
+            "friction": 0.5726337557647597
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 5.1,
+          "elapsed_s": 5.1,
+          "issue_force_N": 0.0,
+          "delivered_impulse_Ns": 0.0,
+          "pre_tilt_deg": 0.5132509003128038,
+          "post_peak_tilt_deg": 0.514
+        },
+        {
+          "seed": 7402,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.0393406722095039,
+            "friction": 0.6818037581898406
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 5.1,
+          "elapsed_s": 5.1,
+          "issue_force_N": 0.0,
+          "delivered_impulse_Ns": 0.0,
+          "pre_tilt_deg": 0.5873230847462128,
+          "post_peak_tilt_deg": 0.593
+        },
+        {
+          "seed": 7403,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.04173547003311598,
+            "friction": 1.0264146756158914
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 5.1,
+          "elapsed_s": 5.1,
+          "issue_force_N": 0.0,
+          "delivered_impulse_Ns": 0.0,
+          "pre_tilt_deg": 0.5692139533590991,
+          "post_peak_tilt_deg": 0.578
+        },
+        {
+          "seed": 7404,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.04775882495907679,
+            "friction": 0.864844678893702
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 5.1,
+          "elapsed_s": 5.1,
+          "issue_force_N": 0.0,
+          "delivered_impulse_Ns": 0.0,
+          "pre_tilt_deg": 0.5227658539069157,
+          "post_peak_tilt_deg": 0.545
+        },
+        {
+          "seed": 7405,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.06289438295481935,
+            "friction": 0.7927011908011716
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 5.1,
+          "elapsed_s": 5.1,
+          "issue_force_N": 0.0,
+          "delivered_impulse_Ns": 0.0,
+          "pre_tilt_deg": 1.4900091200043342,
+          "post_peak_tilt_deg": 1.519
+        },
+        {
+          "seed": 7406,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.05894475831009231,
+            "friction": 0.8364165141696422
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 5.1,
+          "elapsed_s": 5.1,
+          "issue_force_N": 0.0,
+          "delivered_impulse_Ns": 0.0,
+          "pre_tilt_deg": 0.5840921921467186,
+          "post_peak_tilt_deg": 0.582
+        },
+        {
+          "seed": 7407,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.050351131901235024,
+            "friction": 0.8441879830620912
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 5.1,
+          "elapsed_s": 5.1,
+          "issue_force_N": 0.0,
+          "delivered_impulse_Ns": 0.0,
+          "pre_tilt_deg": 1.3486981723494034,
+          "post_peak_tilt_deg": 1.437
+        }
+      ]
+    },
+    {
+      "foot": "v2-stock",
+      "impulse_per_mass_m_s": 0.35,
+      "counts": {
+        "recovered": 8
+      },
+      "trials": [
+        {
+          "seed": 7400,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.037736680896838924,
+            "friction": 1.068962122815957
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.7,
+          "elapsed_s": 5.1,
+          "issue_force_N": 2.79226,
+          "delivered_impulse_Ns": 0.27923,
+          "pre_tilt_deg": 0.1589369825756233,
+          "post_peak_tilt_deg": 11.99
+        },
+        {
+          "seed": 7401,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.05231531092488807,
+            "friction": 0.5726337557647597
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.7,
+          "elapsed_s": 5.1,
+          "issue_force_N": 2.79226,
+          "delivered_impulse_Ns": 0.27923,
+          "pre_tilt_deg": 0.5132509003128038,
+          "post_peak_tilt_deg": 11.174
+        },
+        {
+          "seed": 7402,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.0393406722095039,
+            "friction": 0.6818037581898406
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.7,
+          "elapsed_s": 5.1,
+          "issue_force_N": 2.79226,
+          "delivered_impulse_Ns": 0.27923,
+          "pre_tilt_deg": 0.5873230847462128,
+          "post_peak_tilt_deg": 10.75
+        },
+        {
+          "seed": 7403,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.04173547003311598,
+            "friction": 1.0264146756158914
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.58,
+          "elapsed_s": 5.1,
+          "issue_force_N": 2.79226,
+          "delivered_impulse_Ns": 0.27923,
+          "pre_tilt_deg": 0.5692139533590991,
+          "post_peak_tilt_deg": 12.556
+        },
+        {
+          "seed": 7404,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.04775882495907679,
+            "friction": 0.864844678893702
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.7,
+          "elapsed_s": 5.1,
+          "issue_force_N": 2.79226,
+          "delivered_impulse_Ns": 0.27923,
+          "pre_tilt_deg": 0.5227658539069157,
+          "post_peak_tilt_deg": 11.809
+        },
+        {
+          "seed": 7405,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.06289438295481935,
+            "friction": 0.7927011908011716
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.54,
+          "elapsed_s": 5.1,
+          "issue_force_N": 2.79226,
+          "delivered_impulse_Ns": 0.27923,
+          "pre_tilt_deg": 1.4900091200043342,
+          "post_peak_tilt_deg": 12.349
+        },
+        {
+          "seed": 7406,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.05894475831009231,
+            "friction": 0.8364165141696422
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.54,
+          "elapsed_s": 5.1,
+          "issue_force_N": 2.79226,
+          "delivered_impulse_Ns": 0.27923,
+          "pre_tilt_deg": 0.5840921921467186,
+          "post_peak_tilt_deg": 13.365
+        },
+        {
+          "seed": 7407,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.050351131901235024,
+            "friction": 0.8441879830620912
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.68,
+          "elapsed_s": 5.1,
+          "issue_force_N": 2.79226,
+          "delivered_impulse_Ns": 0.27923,
+          "pre_tilt_deg": 1.3486981723494034,
+          "post_peak_tilt_deg": 11.394
+        }
+      ]
+    },
+    {
+      "foot": "v2-stock",
+      "impulse_per_mass_m_s": 0.55,
+      "counts": {
+        "recovered": 8
+      },
+      "trials": [
+        {
+          "seed": 7400,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.037736680896838924,
+            "friction": 1.068962122815957
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.6,
+          "elapsed_s": 5.1,
+          "issue_force_N": 4.38784,
+          "delivered_impulse_Ns": 0.43878,
+          "pre_tilt_deg": 0.1589369825756233,
+          "post_peak_tilt_deg": 14.647
+        },
+        {
+          "seed": 7401,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.05231531092488807,
+            "friction": 0.5726337557647597
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.6,
+          "elapsed_s": 5.1,
+          "issue_force_N": 4.38784,
+          "delivered_impulse_Ns": 0.43878,
+          "pre_tilt_deg": 0.5132509003128038,
+          "post_peak_tilt_deg": 12.486
+        },
+        {
+          "seed": 7402,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.0393406722095039,
+            "friction": 0.6818037581898406
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.6,
+          "elapsed_s": 5.1,
+          "issue_force_N": 4.38784,
+          "delivered_impulse_Ns": 0.43878,
+          "pre_tilt_deg": 0.5873230847462128,
+          "post_peak_tilt_deg": 12.573
+        },
+        {
+          "seed": 7403,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.04173547003311598,
+            "friction": 1.0264146756158914
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.12,
+          "elapsed_s": 5.1,
+          "issue_force_N": 4.38784,
+          "delivered_impulse_Ns": 0.43878,
+          "pre_tilt_deg": 0.5692139533590991,
+          "post_peak_tilt_deg": 17.211
+        },
+        {
+          "seed": 7404,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.04775882495907679,
+            "friction": 0.864844678893702
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.58,
+          "elapsed_s": 5.1,
+          "issue_force_N": 4.38784,
+          "delivered_impulse_Ns": 0.43878,
+          "pre_tilt_deg": 0.5227658539069157,
+          "post_peak_tilt_deg": 14.394
+        },
+        {
+          "seed": 7405,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.06289438295481935,
+            "friction": 0.7927011908011716
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.58,
+          "elapsed_s": 5.1,
+          "issue_force_N": 4.38784,
+          "delivered_impulse_Ns": 0.43878,
+          "pre_tilt_deg": 1.4900091200043342,
+          "post_peak_tilt_deg": 15.573
+        },
+        {
+          "seed": 7406,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.05894475831009231,
+            "friction": 0.8364165141696422
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.04,
+          "elapsed_s": 5.1,
+          "issue_force_N": 4.38784,
+          "delivered_impulse_Ns": 0.43878,
+          "pre_tilt_deg": 0.5840921921467186,
+          "post_peak_tilt_deg": 17.649
+        },
+        {
+          "seed": 7407,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.050351131901235024,
+            "friction": 0.8441879830620912
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.6,
+          "elapsed_s": 5.1,
+          "issue_force_N": 4.38784,
+          "delivered_impulse_Ns": 0.43878,
+          "pre_tilt_deg": 1.3486981723494034,
+          "post_peak_tilt_deg": 13.168
+        }
+      ]
+    },
+    {
+      "foot": "v2-stock",
+      "impulse_per_mass_m_s": 0.75,
+      "counts": {
+        "recovered": 4,
+        "fell_after_push": 4
+      },
+      "trials": [
+        {
+          "seed": 7400,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.037736680896838924,
+            "friction": 1.068962122815957
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.26,
+          "elapsed_s": 5.1,
+          "issue_force_N": 5.98342,
+          "delivered_impulse_Ns": 0.59834,
+          "pre_tilt_deg": 0.1589369825756233,
+          "post_peak_tilt_deg": 25.071
+        },
+        {
+          "seed": 7401,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.05231531092488807,
+            "friction": 0.5726337557647597
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.4,
+          "elapsed_s": 5.1,
+          "issue_force_N": 5.98342,
+          "delivered_impulse_Ns": 0.59834,
+          "pre_tilt_deg": 0.5132509003128038,
+          "post_peak_tilt_deg": 17.764
+        },
+        {
+          "seed": 7402,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.0393406722095039,
+            "friction": 0.6818037581898406
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 3.42,
+          "issue_force_N": 5.98342,
+          "delivered_impulse_Ns": 0.59834,
+          "pre_tilt_deg": 0.5873230847462128,
+          "post_peak_tilt_deg": 67.115
+        },
+        {
+          "seed": 7403,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.04173547003311598,
+            "friction": 1.0264146756158914
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.52,
+          "issue_force_N": 5.98342,
+          "delivered_impulse_Ns": 0.59834,
+          "pre_tilt_deg": 0.5692139533590991,
+          "post_peak_tilt_deg": 73.519
+        },
+        {
+          "seed": 7404,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.04775882495907679,
+            "friction": 0.864844678893702
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.8,
+          "issue_force_N": 5.98342,
+          "delivered_impulse_Ns": 0.59834,
+          "pre_tilt_deg": 0.5227658539069157,
+          "post_peak_tilt_deg": 67.224
+        },
+        {
+          "seed": 7405,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.06289438295481935,
+            "friction": 0.7927011908011716
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 2.32,
+          "elapsed_s": 5.1,
+          "issue_force_N": 5.98342,
+          "delivered_impulse_Ns": 0.59834,
+          "pre_tilt_deg": 1.4900091200043342,
+          "post_peak_tilt_deg": 22.684
+        },
+        {
+          "seed": 7406,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.05894475831009231,
+            "friction": 0.8364165141696422
+          },
+          "eligible": true,
+          "outcome": "recovered",
+          "final_upright": true,
+          "final_upright_s": 1.4,
+          "elapsed_s": 5.1,
+          "issue_force_N": 5.98342,
+          "delivered_impulse_Ns": 0.59834,
+          "pre_tilt_deg": 0.5840921921467186,
+          "post_peak_tilt_deg": 19.153
+        },
+        {
+          "seed": 7407,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.050351131901235024,
+            "friction": 0.8441879830620912
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.92,
+          "issue_force_N": 5.98342,
+          "delivered_impulse_Ns": 0.59834,
+          "pre_tilt_deg": 1.3486981723494034,
+          "post_peak_tilt_deg": 66.575
+        }
+      ]
+    },
+    {
+      "foot": "v2-stock",
+      "impulse_per_mass_m_s": 1.0,
+      "counts": {
+        "fell_after_push": 8
+      },
+      "trials": [
+        {
+          "seed": 7400,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.037736680896838924,
+            "friction": 1.068962122815957
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.32,
+          "issue_force_N": 7.97789,
+          "delivered_impulse_Ns": 0.79779,
+          "pre_tilt_deg": 0.1589369825756233,
+          "post_peak_tilt_deg": 76.39
+        },
+        {
+          "seed": 7401,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.05231531092488807,
+            "friction": 0.5726337557647597
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.4,
+          "issue_force_N": 7.97789,
+          "delivered_impulse_Ns": 0.79779,
+          "pre_tilt_deg": 0.5132509003128038,
+          "post_peak_tilt_deg": 71.364
+        },
+        {
+          "seed": 7402,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.0393406722095039,
+            "friction": 0.6818037581898406
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.38,
+          "issue_force_N": 7.97789,
+          "delivered_impulse_Ns": 0.79779,
+          "pre_tilt_deg": 0.5873230847462128,
+          "post_peak_tilt_deg": 68.871
+        },
+        {
+          "seed": 7403,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.04173547003311598,
+            "friction": 1.0264146756158914
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.32,
+          "issue_force_N": 7.97789,
+          "delivered_impulse_Ns": 0.79779,
+          "pre_tilt_deg": 0.5692139533590991,
+          "post_peak_tilt_deg": 76.546
+        },
+        {
+          "seed": 7404,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.04775882495907679,
+            "friction": 0.864844678893702
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.34,
+          "issue_force_N": 7.97789,
+          "delivered_impulse_Ns": 0.79779,
+          "pre_tilt_deg": 0.5227658539069157,
+          "post_peak_tilt_deg": 71.098
+        },
+        {
+          "seed": 7405,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.06289438295481935,
+            "friction": 0.7927011908011716
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.5,
+          "issue_force_N": 7.97789,
+          "delivered_impulse_Ns": 0.79779,
+          "pre_tilt_deg": 1.4900091200043342,
+          "post_peak_tilt_deg": 73.389
+        },
+        {
+          "seed": 7406,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.05894475831009231,
+            "friction": 0.8364165141696422
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.36,
+          "issue_force_N": 7.97789,
+          "delivered_impulse_Ns": 0.79779,
+          "pre_tilt_deg": 0.5840921921467186,
+          "post_peak_tilt_deg": 67.259
+        },
+        {
+          "seed": 7407,
+          "input": {
+            "start": "stand",
+            "surface": "carpet",
+            "tau_s": 0.050351131901235024,
+            "friction": 0.8441879830620912
+          },
+          "eligible": true,
+          "outcome": "fell_after_push",
+          "final_upright": false,
+          "final_upright_s": 0.0,
+          "elapsed_s": 2.48,
+          "issue_force_N": 7.97789,
+          "delivered_impulse_Ns": 0.79779,
+          "pre_tilt_deg": 1.3486981723494034,
+          "post_peak_tilt_deg": 65.367
+        }
+      ]
+    }
+  ],
+  "paired": []
+}

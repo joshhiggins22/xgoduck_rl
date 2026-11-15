@@ -24,6 +24,12 @@ To reproduce the 0.35 N·s/kg comparison from the lab directory, run both comman
 .venv/bin/python stock_eval.py --foot v2-stock --surface carpet --start stand --sit-dwell 3 --pose-handoff --rise-push .35 --scale 1.0 --seed 7500 --trials 12 --walk-onnx runtime/walk-4ce3315c.onnx --sitstand-onnx runs/stock-49k/policy.onnx
 ```
 
+### Balance after the switch to Walk
+
+The [second Walk candidate](runs/stock-walk-recovery-stress/walk.onnx) is based on the owner's archived Walk actor at revision `4ce3315c`. With stock legs and feet it adds a correction for backward pitching while the movement command is zero. At a 0.90 N·s/kg backward push on simulated carpet, recoveries improved from **0/10 to 8/10** when Walk had been active throughout, and **3/10 to 10/10** when the duck started upright under SitStand and then switched to Walk. In a separate three-second commanded Sit, rise, measured switch and push, recovery improved from **5/8 to 6/8** at the same severity. Factory SitStand was used throughout the sit and rise in this last comparison. The new Walk rescued two seeds and fell on one seed the factory Walk recovered. Keep the two hardware trials separate to identify which change helped. [Run notes](runs/stock-walk-recovery-stress/README.md) · [Continuous Walk](results/stock-walk-recovery-stress-continuous.json) · [Upright handoff](results/stock-walk-recovery-stress-handoff.json) · [Commanded cycle](results/stock-walk-recovery-stress-cycle.json)
+
+Both the November Walk model and this candidate also recovered in 8/8 forward, left and right push trials at each of 0.35 and 0.65 N·s/kg, on the same eight seeds (9500–9507) with zero commanded velocity. The graph preserves the archived model's output for the same observation when the movement command is nonzero. Joystick walking, actual carpets and physical servo loads still need testing on the robot. The earlier [moderate-push Walk candidate](runs/stock-walk-recovery/README.md) regressed in some stationary trials and is included for simulation comparison only. [Directional checks](results/stock-walk-other-directions.json)
+
 ## Stock V2 feet
 
 The factory SitStand ONNX initialized the PPO actor. Two CPU workers trained on a mixture of hard and simulated carpet for 49,152 samples in 165 seconds on this Intel Mac. Both actors received identical seeds, servo filtering and timing. A successful six-second episode ended with at least one continuous second upright and no earlier fall.

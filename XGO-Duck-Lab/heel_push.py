@@ -16,7 +16,7 @@ SETTLE_S, PUSH_S, AFTER_S = 2.0, 0.10, 3.0
 READY_S, SUCCESS_S = 0.4, 1.0
 
 
-def episode(env, actor, seed, specific_impulse):
+def episode(env, actor, seed, specific_impulse, direction="backward"):
     _, initial = env.reset(seed=seed)
     data = env.data
     actor.reset(data)
@@ -32,14 +32,19 @@ def episode(env, actor, seed, specific_impulse):
     post_steps = 0
     pre_tilt = None
     impulse_applied = 0.0
+    info = None
     for step in range(env.max_steps):
         if step == settle_steps:
+            assert info is not None  # Settling produced at least one measured step.
             pre_tilt = info["tilt_deg"]
             if info["upright_streak_s"] + 1e-9 < READY_S:
                 break
             eligible = True
             heading = data.xmat[env.trunk].reshape(3, 3)[:2, 0].copy()
-            wrench[:2] = -force * heading / np.linalg.norm(heading)
+            forward = heading / np.linalg.norm(heading)
+            left = np.array([-forward[1], forward[0]])
+            along = {"backward": -forward, "forward": forward, "left": left, "right": -left}
+            wrench[:2] = force * along[direction]
         if step == settle_steps + push_steps:
             wrench[:] = 0
         target = actor.targets()
@@ -52,6 +57,7 @@ def episode(env, actor, seed, specific_impulse):
         if fell or timeout:
             break
     wrench[:] = 0
+    assert info is not None
     if not eligible:
         outcome = "fell_before_push" if info["fell"] else "unsettled_before_push"
     elif info["fell"]:
@@ -83,6 +89,7 @@ def benchmark(
     candidates=("v2-heel15",),
     policy_file=None,
     scale=1.0,
+    direction="backward",
 ):
     seeds = list(seeds)
     path = Path(policy_file) if policy_file else ROOT / "runtime" / f"xgoduck_{policy}.onnx"
@@ -98,7 +105,7 @@ def benchmark(
         actor = StockPolicy(env.model, ROOT / "runtime", path, scale=scale)
         try:
             for impulse in impulses:
-                cases = [episode(env, actor, seed, impulse) for seed in seeds]
+                cases = [episode(env, actor, seed, impulse, direction) for seed in seeds]
                 counts = {}
                 for case in cases:
                     outcome = case["outcome"]
@@ -139,6 +146,7 @@ def benchmark(
         policy=policy,
         policy_file=path.name,
         scale=scale,
+        direction=direction,
         policy_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
         seeds=seeds,
         surface="carpet",
@@ -146,7 +154,7 @@ def benchmark(
         settle_s=SETTLE_S,
         pulse_s=PUSH_S,
         after_s=AFTER_S,
-        protocol="Zero command. At t=2 s screen for >=0.4 s continuously upright. Apply a constant force backward along initial push-time trunk heading at trunk COM for 0.10 s. Recover when no fall and >=1 s continuously upright at t=5.10 s.",
+        protocol=f"Zero command. At t=2 s screen for >=0.4 s continuously upright. Apply a constant force {direction} relative to the initial trunk heading at push onset at trunk COM for 0.10 s. Recover when no fall and >=1 s continuously upright at t=5.10 s.",
         thresholds="upright: z>=0.124 m, tilt<15 deg, both knees <0.40 rad magnitude; fall: z<0.052 m or tilt>65 deg",
         groups=rows,
         paired=paired,
@@ -165,6 +173,9 @@ if __name__ == "__main__":
     parser.add_argument("--stock-only", action="store_true", help="Test the original V2 feet alone.")
     parser.add_argument(
         "--policy-file", type=Path, help="Use this 61-input, 14-output ONNX for the complete trial."
+    )
+    parser.add_argument(
+        "--direction", choices=["backward", "forward", "left", "right"], default="backward"
     )
     parser.add_argument("--scale", type=float, default=1.0, help="Runtime action multiplier.")
     parser.add_argument("--seed", type=int, default=2100)
@@ -195,6 +206,7 @@ if __name__ == "__main__":
         () if args.stock_only else args.candidate,
         args.policy_file,
         args.scale,
+        args.direction,
     )
     args.json.parent.mkdir(parents=True, exist_ok=True)
     args.json.write_text(json.dumps(result, indent=2) + "\n")
