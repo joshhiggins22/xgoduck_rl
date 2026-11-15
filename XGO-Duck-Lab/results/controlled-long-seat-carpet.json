@@ -1,0 +1,154 @@
+{
+  "foot": "v2-heel15",
+  "surface": "carpet",
+  "sit_s": 3.0,
+  "rise_s": 6.0,
+  "successes": 12,
+  "episodes": 12,
+  "trials": [
+    {
+      "seed": 3700,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.09349284006607789,
+        "tilt_deg": 1.491890190490123,
+        "both_knee_min_rad": 1.2994607053579017
+      },
+      "final_upright_s": 5.22
+    },
+    {
+      "seed": 3701,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.0951336388185373,
+        "tilt_deg": 1.542792965659936,
+        "both_knee_min_rad": 1.3017434909615924
+      },
+      "final_upright_s": 5.22
+    },
+    {
+      "seed": 3702,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.09518058169125326,
+        "tilt_deg": 1.6214824434286943,
+        "both_knee_min_rad": 1.306749470944645
+      },
+      "final_upright_s": 5.22
+    },
+    {
+      "seed": 3703,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.09503912446292775,
+        "tilt_deg": 1.4165812741536838,
+        "both_knee_min_rad": 1.3019202682776094
+      },
+      "final_upright_s": 5.22
+    },
+    {
+      "seed": 3704,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.0963301646493925,
+        "tilt_deg": 1.529961016622826,
+        "both_knee_min_rad": 1.2966390114340807
+      },
+      "final_upright_s": 5.22
+    },
+    {
+      "seed": 3705,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.09528411221663056,
+        "tilt_deg": 1.5356532964605885,
+        "both_knee_min_rad": 1.307802343620756
+      },
+      "final_upright_s": 5.2
+    },
+    {
+      "seed": 3706,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.09610055763646015,
+        "tilt_deg": 1.4724741159043289,
+        "both_knee_min_rad": 1.3010101687866258
+      },
+      "final_upright_s": 5.22
+    },
+    {
+      "seed": 3707,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.09500347588489391,
+        "tilt_deg": 1.4046668053872111,
+        "both_knee_min_rad": 1.302877644429645
+      },
+      "final_upright_s": 5.22
+    },
+    {
+      "seed": 3708,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.09601024125162548,
+        "tilt_deg": 1.4829345841054298,
+        "both_knee_min_rad": 1.3001005886568098
+      },
+      "final_upright_s": 5.22
+    },
+    {
+      "seed": 3709,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.09564538746830072,
+        "tilt_deg": 1.5262031434146524,
+        "both_knee_min_rad": 1.2981895497040767
+      },
+      "final_upright_s": 5.22
+    },
+    {
+      "seed": 3710,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.09557622536415693,
+        "tilt_deg": 1.5691392924636007,
+        "both_knee_min_rad": 1.2991364149757245
+      },
+      "final_upright_s": 5.22
+    },
+    {
+      "seed": 3711,
+      "success": true,
+      "seated": true,
+      "fell": false,
+      "at_stand_command": {
+        "height_m": 0.09510300121774325,
+        "tilt_deg": 1.5591163838939615,
+        "both_knee_min_rad": 1.3065087107435835
+      },
+      "final_upright_s": 5.22
+    }
+  ]
+}

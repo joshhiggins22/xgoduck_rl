@@ -1,0 +1,386 @@
+[
+  {
+    "surface": "hard",
+    "seed": 3500,
+    "score": 57.09953055225786,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.0989075435087389,
+      "tilt": 1.3022985098856958,
+      "knee": 1.2840381678251567,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "hard",
+    "seed": 3501,
+    "score": 57.098373244724534,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09884815703850636,
+      "tilt": 1.3788638593669171,
+      "knee": 1.2860696029570495,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "hard",
+    "seed": 3502,
+    "score": 57.07565739724432,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.0977371818005443,
+      "tilt": 1.2932230739920911,
+      "knee": 1.308872426557233,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "hard",
+    "seed": 3503,
+    "score": 57.0824797317242,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09806938297179787,
+      "tilt": 1.3906830261428382,
+      "knee": 1.303201709876942,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "hard",
+    "seed": 3504,
+    "score": 57.05951340928158,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09829376259839727,
+      "tilt": 1.3908136084716158,
+      "knee": 1.2990935623107567,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.2
+  },
+  {
+    "surface": "hard",
+    "seed": 3505,
+    "score": 57.10270183779662,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09904792573406453,
+      "tilt": 1.297759698237517,
+      "knee": 1.2801201492716487,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "hard",
+    "seed": 3506,
+    "score": 57.086971021221856,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09834110693754686,
+      "tilt": 1.414993134370985,
+      "knee": 1.2980474063829412,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "hard",
+    "seed": 3507,
+    "score": 57.10494290216705,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09918039559669731,
+      "tilt": 1.3969631919020333,
+      "knee": 1.2784767059585942,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "hard",
+    "seed": 3508,
+    "score": 57.10146127558358,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09899888529776012,
+      "tilt": 1.2975634444447492,
+      "knee": 1.2814022090473447,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "hard",
+    "seed": 3509,
+    "score": 57.09934355786683,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09890694384074145,
+      "tilt": 1.3553245854418792,
+      "knee": 1.28486607759434,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "hard",
+    "seed": 3510,
+    "score": 57.077356003709255,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09913361015144825,
+      "tilt": 1.4187466954052992,
+      "knee": 1.2798429663948991,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.2
+  },
+  {
+    "surface": "hard",
+    "seed": 3511,
+    "score": 57.07782709096551,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.0991355294657917,
+      "tilt": 1.3303726455129,
+      "knee": 1.27853444326814,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.2
+  },
+  {
+    "surface": "carpet",
+    "seed": 3500,
+    "score": 57.0650418941136,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09558903959168256,
+      "tilt": 1.9747653963015945,
+      "knee": 1.2938150961513692,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "carpet",
+    "seed": 3501,
+    "score": 57.0753572340751,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09618714718265595,
+      "tilt": 2.243725661698062,
+      "knee": 1.2894944329404556,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "carpet",
+    "seed": 3502,
+    "score": 57.0631447152359,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09565554807545895,
+      "tilt": 2.053144534609713,
+      "knee": 1.2957963225799418,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "carpet",
+    "seed": 3503,
+    "score": 3.8671665199943774,
+    "seat": false,
+    "rise": false,
+    "fell": true,
+    "seat_state": {
+      "z": 0.06770535922228751,
+      "tilt": 67.38390826830613,
+      "knee": 1.2425818654740977,
+      "seated": false
+    },
+    "tick": 73,
+    "end_streak": 0.0
+  },
+  {
+    "surface": "carpet",
+    "seed": 3504,
+    "score": 57.051577887875965,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09506526536862699,
+      "tilt": 1.561678246029746,
+      "knee": 1.29643245876475,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "carpet",
+    "seed": 3505,
+    "score": 57.07360982818467,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09605507131472213,
+      "tilt": 1.925592344043519,
+      "knee": 1.2941501359839045,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "carpet",
+    "seed": 3506,
+    "score": 57.06150821920216,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09558107389086427,
+      "tilt": 1.6061887841919231,
+      "knee": 1.2918899670717647,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "carpet",
+    "seed": 3507,
+    "score": 57.082119608537695,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09498207864244958,
+      "tilt": 1.684468720723564,
+      "knee": 1.290015326251767,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.24
+  },
+  {
+    "surface": "carpet",
+    "seed": 3508,
+    "score": 57.060006670379344,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09553804162815592,
+      "tilt": 2.395561135819168,
+      "knee": 1.2872723479057688,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "carpet",
+    "seed": 3509,
+    "score": 57.05366339567075,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09654924890719634,
+      "tilt": 1.9972338839626014,
+      "knee": 1.2886082043843679,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.2
+  },
+  {
+    "surface": "carpet",
+    "seed": 3510,
+    "score": 57.05283643125273,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09531363544146,
+      "tilt": 1.845590621548375,
+      "knee": 1.3032744972748866,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  },
+  {
+    "surface": "carpet",
+    "seed": 3511,
+    "score": 57.07584718050598,
+    "seat": true,
+    "rise": true,
+    "fell": false,
+    "seat_state": {
+      "z": 0.09593546494125296,
+      "tilt": 1.204532362916543,
+      "knee": 1.2906608201458738,
+      "seated": true
+    },
+    "tick": 389,
+    "end_streak": 5.22
+  }
+]

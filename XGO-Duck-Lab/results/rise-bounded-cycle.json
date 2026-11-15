@@ -1,0 +1,216 @@
+{
+  "policy": "rise.onnx",
+  "surface": "carpet",
+  "handoff": "none",
+  "foot": "v2-heel15",
+  "sit_s": 3.0,
+  "rise_s": 6.0,
+  "successes": 0,
+  "episodes": 12,
+  "rows": [
+    {
+      "seed": 2610,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1333,
+        "tilt_deg": 3.3,
+        "knee_rad": [
+          0.331,
+          -0.181
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 6.0,
+      "success": false
+    },
+    {
+      "seed": 2611,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1276,
+        "tilt_deg": 9.91,
+        "knee_rad": [
+          0.613,
+          -0.477
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2612,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1262,
+        "tilt_deg": 10.81,
+        "knee_rad": [
+          0.637,
+          -0.547
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2613,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1265,
+        "tilt_deg": 10.65,
+        "knee_rad": [
+          0.63,
+          -0.532
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2614,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1324,
+        "tilt_deg": 2.94,
+        "knee_rad": [
+          0.324,
+          -0.178
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 6.0,
+      "success": false
+    },
+    {
+      "seed": 2615,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1277,
+        "tilt_deg": 9.04,
+        "knee_rad": [
+          0.581,
+          -0.429
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2616,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1255,
+        "tilt_deg": 11.2,
+        "knee_rad": [
+          0.656,
+          -0.59
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2617,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1325,
+        "tilt_deg": 1.58,
+        "knee_rad": [
+          0.226,
+          -0.129
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 6.0,
+      "success": false
+    },
+    {
+      "seed": 2618,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1303,
+        "tilt_deg": 7.85,
+        "knee_rad": [
+          0.513,
+          -0.352
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 5.94,
+      "success": false
+    },
+    {
+      "seed": 2619,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1314,
+        "tilt_deg": 6.69,
+        "knee_rad": [
+          0.449,
+          -0.286
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 5.96,
+      "success": false
+    },
+    {
+      "seed": 2620,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.1259,
+        "tilt_deg": 10.92,
+        "knee_rad": [
+          0.651,
+          -0.567
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2621,
+      "confirmed_seated": false,
+      "before_stand": {
+        "z_m": 0.126,
+        "tilt_deg": 11.27,
+        "knee_rad": [
+          0.653,
+          -0.588
+        ]
+      },
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": null,
+      "final_upright_s": 5.92,
+      "success": false
+    }
+  ]
+}

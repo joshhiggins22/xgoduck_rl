@@ -2,6 +2,8 @@
 
 Reinforcement-learning environments for training XgoDuck, a small biped whose geometry and inertia differ from MicroDuck. Policies are trained with PPO on [mjlab](https://github.com/mujocolab/mjlab) (MuJoCo Warp) and exported to ONNX.
 
+The [native Mac training lab](XGO-Duck-Lab/README.md) runs on CPU and includes the stock V2 feet, 5–15 mm heel variants, trained policies, and [measured carpet trials](XGO-Duck-Lab/RESULTS.md).
+
 ## Acknowledgments
 
 This repository is a downstream project based on [microduck_rl](https://github.com/pollen-robotics/microduck_rl) by [Pollen Robotics](https://github.com/pollen-robotics). Training runs on [mjlab](https://github.com/mujocolab/mjlab). Joint actuation uses [BAM](https://github.com/Rhoban/bam) (Better Actuator Models) from Rhoban.

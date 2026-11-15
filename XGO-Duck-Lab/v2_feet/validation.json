@@ -1,0 +1,279 @@
+{
+  "mujoco": "3.7.0",
+  "variants": {
+    "upstream": {
+      "nq": 21,
+      "nu": 14,
+      "actions": [
+        "left_hip_yaw",
+        "left_hip_roll",
+        "left_hip_pitch",
+        "left_knee",
+        "left_ankle",
+        "neck_pitch",
+        "head_pitch",
+        "head_yaw",
+        "head_roll",
+        "right_hip_yaw",
+        "right_hip_roll",
+        "right_hip_pitch",
+        "right_knee",
+        "right_ankle"
+      ],
+      "fixture": {
+        "0": {
+          "left": {
+            "toe_x_mm": 42.587706612849715,
+            "heel_x_mm": -11.46965089736414,
+            "lowest_z_mm": 1.0007583620646274,
+            "rear_floor_contact_x_mm": 40.51988993773332
+          },
+          "right": {
+            "toe_x_mm": 42.586922341186146,
+            "heel_x_mm": -11.470209493822741,
+            "lowest_z_mm": 1.0004501036124052,
+            "rear_floor_contact_x_mm": 40.51932759005114
+          }
+        },
+        "-12": {
+          "left": {
+            "toe_x_mm": 69.92574566469904,
+            "heel_x_mm": 14.640394436845856,
+            "lowest_z_mm": 2.2828761937478124,
+            "rear_floor_contact_x_mm": 18.382186393892294
+          },
+          "right": {
+            "toe_x_mm": 69.9249178737789,
+            "heel_x_mm": 14.639893843457614,
+            "lowest_z_mm": 2.2825544686419543,
+            "rear_floor_contact_x_mm": 18.38133359238433
+          }
+        }
+      },
+      "ankle_masses_g": {
+        "left": 29.289555840727658,
+        "right": 29.28955071377668
+      }
+    },
+    "v2-stock": {
+      "nq": 21,
+      "nu": 14,
+      "actions": [
+        "left_hip_yaw",
+        "left_hip_roll",
+        "left_hip_pitch",
+        "left_knee",
+        "left_ankle",
+        "neck_pitch",
+        "head_pitch",
+        "head_yaw",
+        "head_roll",
+        "right_hip_yaw",
+        "right_hip_roll",
+        "right_hip_pitch",
+        "right_knee",
+        "right_ankle"
+      ],
+      "fixture": {
+        "0": {
+          "left": {
+            "toe_x_mm": 42.58769245394511,
+            "heel_x_mm": -11.458778453271906,
+            "lowest_z_mm": 1.010609137054759,
+            "rear_floor_contact_x_mm": 36.692612499672926
+          },
+          "right": {
+            "toe_x_mm": 42.58691858062541,
+            "heel_x_mm": -11.459352088709338,
+            "lowest_z_mm": 1.0103368499901848,
+            "rear_floor_contact_x_mm": 37.58711005857399
+          }
+        },
+        "-12": {
+          "left": {
+            "toe_x_mm": 69.6020280734098,
+            "heel_x_mm": 14.661518856287408,
+            "lowest_z_mm": 2.614114815793652,
+            "rear_floor_contact_x_mm": 20.25451894851218
+          },
+          "right": {
+            "toe_x_mm": 69.60124695843952,
+            "heel_x_mm": 14.662424649298522,
+            "lowest_z_mm": 2.6135507101376354,
+            "rear_floor_contact_x_mm": 20.632954489359758
+          }
+        }
+      },
+      "ankle_masses_g": {
+        "left": 29.289555840727658,
+        "right": 29.28955071377668
+      }
+    },
+    "v2-heel5": {
+      "nq": 21,
+      "nu": 14,
+      "actions": [
+        "left_hip_yaw",
+        "left_hip_roll",
+        "left_hip_pitch",
+        "left_knee",
+        "left_ankle",
+        "neck_pitch",
+        "head_pitch",
+        "head_yaw",
+        "head_roll",
+        "right_hip_yaw",
+        "right_hip_roll",
+        "right_hip_pitch",
+        "right_knee",
+        "right_ankle"
+      ],
+      "fixture": {
+        "0": {
+          "left": {
+            "toe_x_mm": 42.58769207130483,
+            "heel_x_mm": -16.458817722245485,
+            "lowest_z_mm": 1.010609110225446,
+            "rear_floor_contact_x_mm": 37.58793453469499
+          },
+          "right": {
+            "toe_x_mm": 42.58691866982028,
+            "heel_x_mm": -16.459389155655487,
+            "lowest_z_mm": 1.0103371885972732,
+            "rear_floor_contact_x_mm": 37.587110098842686
+          }
+        },
+        "-12": {
+          "left": {
+            "toe_x_mm": 69.6020526202424,
+            "heel_x_mm": 9.751723848484813,
+            "lowest_z_mm": 1.5906051756295232,
+            "rear_floor_contact_x_mm": 15.230668147674063
+          },
+          "right": {
+            "toe_x_mm": 69.60124700916478,
+            "heel_x_mm": 9.751206693466449,
+            "lowest_z_mm": 1.5903018014049308,
+            "rear_floor_contact_x_mm": 15.554343272632277
+          }
+        }
+      },
+      "ankle_masses_g": {
+        "left": 32.323508018880005,
+        "right": 32.32435466873
+      }
+    },
+    "v2-heel10": {
+      "nq": 21,
+      "nu": 14,
+      "actions": [
+        "left_hip_yaw",
+        "left_hip_roll",
+        "left_hip_pitch",
+        "left_knee",
+        "left_ankle",
+        "neck_pitch",
+        "head_pitch",
+        "head_yaw",
+        "head_roll",
+        "right_hip_yaw",
+        "right_hip_roll",
+        "right_hip_pitch",
+        "right_knee",
+        "right_ankle"
+      ],
+      "fixture": {
+        "0": {
+          "left": {
+            "toe_x_mm": 42.587693499533145,
+            "heel_x_mm": -21.458755079352237,
+            "lowest_z_mm": 1.0106088936468176,
+            "rear_floor_contact_x_mm": 37.58793476242887
+          },
+          "right": {
+            "toe_x_mm": 42.586917428549086,
+            "heel_x_mm": -21.45932712064283,
+            "lowest_z_mm": 1.0103370157438734,
+            "rear_floor_contact_x_mm": 37.58710973376812
+          }
+        },
+        "-12": {
+          "left": {
+            "toe_x_mm": 69.60205200151404,
+            "heel_x_mm": 4.855934714153558,
+            "lowest_z_mm": 0.575092044433418,
+            "rear_floor_contact_x_mm": 10.65906950472138
+          },
+          "right": {
+            "toe_x_mm": 69.60124659066693,
+            "heel_x_mm": 4.855417077171062,
+            "lowest_z_mm": 0.5747984648450735,
+            "rear_floor_contact_x_mm": 10.658554636337472
+          }
+        }
+      },
+      "ankle_masses_g": {
+        "left": 35.32080741094,
+        "right": 35.32342082743
+      }
+    },
+    "v2-heel15": {
+      "nq": 21,
+      "nu": 14,
+      "actions": [
+        "left_hip_yaw",
+        "left_hip_roll",
+        "left_hip_pitch",
+        "left_knee",
+        "left_ankle",
+        "neck_pitch",
+        "head_pitch",
+        "head_yaw",
+        "head_roll",
+        "right_hip_yaw",
+        "right_hip_roll",
+        "right_hip_pitch",
+        "right_knee",
+        "right_ankle"
+      ],
+      "fixture": {
+        "0": {
+          "left": {
+            "toe_x_mm": 42.58769007194907,
+            "heel_x_mm": -26.458695263330302,
+            "lowest_z_mm": 1.010609017318094,
+            "rear_floor_contact_x_mm": 37.58793505796566
+          },
+          "right": {
+            "toe_x_mm": 42.5869193056143,
+            "heel_x_mm": -26.45926815844283,
+            "lowest_z_mm": 1.0103368594764992,
+            "rear_floor_contact_x_mm": 37.58711031132834
+          }
+        },
+        "-12": {
+          "left": {
+            "toe_x_mm": 69.60205051705262,
+            "heel_x_mm": -0.03985146078633317,
+            "lowest_z_mm": -0.43925081523167253,
+            "rear_floor_contact_x_mm": 5.376419566917797
+          },
+          "right": {
+            "toe_x_mm": 69.60124609190616,
+            "heel_x_mm": -0.040370675653364496,
+            "lowest_z_mm": -0.43953624479042136,
+            "rear_floor_contact_x_mm": 5.7233273519611
+          }
+        }
+      },
+      "ankle_masses_g": {
+        "left": 38.31799906899,
+        "right": 38.32237874427
+      }
+    }
+  },
+  "heel_geometry_only_masses_g": {
+    "left": 29.289555840727658,
+    "right": 29.28955071377668
+  }
+}

@@ -1,0 +1,10 @@
+# Native CPU stack tested on Intel macOS 15.7.7 and CPython 3.12.
+numpy==1.26.4
+mujoco==3.7.0
+torch==2.2.2
+gymnasium==0.29.1
+stable-baselines3==2.3.2
+onnx==1.17.0
+onnxruntime==1.23.2
+colorama==0.4.6
+scipy==1.13.1

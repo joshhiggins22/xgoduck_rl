@@ -1,0 +1,120 @@
+{
+  "policy": "rise.onnx",
+  "surface": "carpet",
+  "handoff": "timer",
+  "foot": "v2-heel15",
+  "sit_s": 3.0,
+  "rise_s": 6.0,
+  "successes": 0,
+  "episodes": 12,
+  "rows": [
+    {
+      "seed": 2610,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 9.0,
+      "success": false
+    },
+    {
+      "seed": 2611,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2612,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2613,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2614,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 9.0,
+      "success": false
+    },
+    {
+      "seed": 2615,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2616,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2617,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 9.0,
+      "success": false
+    },
+    {
+      "seed": 2618,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 5.94,
+      "success": false
+    },
+    {
+      "seed": 2619,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 5.96,
+      "success": false
+    },
+    {
+      "seed": 2620,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 5.92,
+      "success": false
+    },
+    {
+      "seed": 2621,
+      "confirmed_seated": false,
+      "fell": false,
+      "timed_out": false,
+      "handoff_s": 1.0,
+      "final_upright_s": 5.92,
+      "success": false
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "foot": "v2-stock",
+  "surface": "carpet",
+  "duration_s": 9,
+  "policy": "runs/stock-49k/policy.onnx",
+  "command_sequence": "3 s Sit using factory; 6 s Stand; sensor and action history retained",
+  "comparison": {
+    "factory": {
+      "seated": 12,
+      "success": 10,
+      "fell": 2,
+      "trials": [
+        {
+          "seed": 3100,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.7,
+          "end_tilt_deg": 2.2623590589737392
+        },
+        {
+          "seed": 3101,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 4.48,
+          "end_tilt_deg": 2.2957838702568054
+        },
+        {
+          "seed": 3102,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 2.2935463595417516
+        },
+        {
+          "seed": 3103,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 2.226961793779856
+        },
+        {
+          "seed": 3104,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 2.1875162478660273
+        },
+        {
+          "seed": 3105,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.7,
+          "end_tilt_deg": 2.2920329784852798
+        },
+        {
+          "seed": 3106,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.7,
+          "end_tilt_deg": 2.2768334522993015
+        },
+        {
+          "seed": 3107,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.7,
+          "end_tilt_deg": 2.2798771412779604
+        },
+        {
+          "seed": 3108,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 4.42,
+          "end_tilt_deg": 2.3311693495374253
+        },
+        {
+          "seed": 3109,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 2.2092914709911344
+        },
+        {
+          "seed": 3110,
+          "seated": true,
+          "success": false,
+          "fell": true,
+          "final_hold_s": 0.0,
+          "end_tilt_deg": 69.9560447365271
+        },
+        {
+          "seed": 3111,
+          "seated": true,
+          "success": false,
+          "fell": true,
+          "final_hold_s": 0.0,
+          "end_tilt_deg": 73.87045446786577
+        }
+      ]
+    },
+    "candidate": {
+      "seated": 12,
+      "success": 12,
+      "fell": 0,
+      "trials": [
+        {
+          "seed": 3100,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.4308240124757352
+        },
+        {
+          "seed": 3101,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.4649036636717139
+        },
+        {
+          "seed": 3102,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.4725650034371534
+        },
+        {
+          "seed": 3103,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.4775814957518956
+        },
+        {
+          "seed": 3104,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.4272708632518953
+        },
+        {
+          "seed": 3105,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.4578457833480978
+        },
+        {
+          "seed": 3106,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.4618525836568672
+        },
+        {
+          "seed": 3107,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.4573368532973543
+        },
+        {
+          "seed": 3108,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.457542277143911
+        },
+        {
+          "seed": 3109,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.4454457886373435
+        },
+        {
+          "seed": 3110,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.68,
+          "end_tilt_deg": 1.4868189438132906
+        },
+        {
+          "seed": 3111,
+          "seated": true,
+          "success": true,
+          "fell": false,
+          "final_hold_s": 5.7,
+          "end_tilt_deg": 1.4429489878006612
+        }
+      ]
+    }
+  }
+}

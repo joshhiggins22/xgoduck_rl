@@ -1,0 +1,17 @@
+{
+  "foot": "v2-heel15",
+  "surface": "mixed",
+  "start": "mixed",
+  "seed": 73,
+  "start_steps": 0,
+  "timesteps": 65536,
+  "wall_s": 227.59,
+  "curriculum": true,
+  "rollout": 256,
+  "workers": 2,
+  "batch_size": 128,
+  "source": null,
+  "warmstart_max_abs_error": 4.76837158203125e-07,
+  "reloaded_export_max_abs_error": 7.152557373046875e-07,
+  "max_actor_parameter_change": 0.005425691604614258
+}
