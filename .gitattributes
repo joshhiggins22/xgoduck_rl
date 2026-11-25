@@ -6,3 +6,4 @@
 *.jpeg -text
 *.gif -text
 *.pdf -text
+*.onnx binary
