@@ -19,7 +19,7 @@ class WindowClosed(Exception):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--seed", type=int, default=3500)
-    parser.add_argument("--surface", choices=["carpet", "hard"], default="carpet")
+    parser.add_argument("--surface", choices=["carpet", "hard", "hardwood", "residential-carpet"], default="carpet")
     parser.add_argument("--cycles", type=int, help="Close after this many replays")
     args = parser.parse_args()
     if args.cycles is not None and args.cycles < 1:

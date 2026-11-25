@@ -9,12 +9,13 @@ import numpy as np
 
 from bam.model import load_model
 from bam.mujoco import MujocoController
+from floor_surfaces import CARPET_IMPEDANCE, HARDWOOD_IMPEDANCE, CarpetField
 from stock_policy import JOINT_NAMES, PolicyActions, SimFeedback
 
 ROOT = Path(__file__).resolve().parent
 from v2_feet import VARIANTS as FEET
 
-SURFACES = ("hard", "carpet", "mixed")
+SURFACES = ("hard", "carpet", "mixed", "hardwood", "residential-carpet")
 DT = 0.005
 DECIMATION = 4
 
@@ -31,6 +32,7 @@ class DuckSitStandEnv(gym.Env):
         seed=None,
         perturb=True,
         mass_delta=True,
+        runtime_dir=None,
     ):
         super().__init__()
         if foot not in FEET or surface not in SURFACES or start not in ("sit", "stand", "mixed"):
@@ -63,12 +65,17 @@ class DuckSitStandEnv(gym.Env):
                 joint.armature = float(servo.actuator.get_extra_inertia())
                 joint.damping = np.zeros_like(joint.damping)
                 joint.frictionloss = 0.0
+        if surface == "residential-carpet":
+            for side in ("left", "right"):
+                spec.add_pair(name=f"{side}_carpet", geomname1="floor", geomname2=f"{side}_foot_collision",
+                              condim=3, solref=[.060, 1.], solimp=CARPET_IMPEDANCE,
+                              friction=[.79, .79, .005, .0001, .0001])
         self.model = spec.compile()
         self.data = mj.MjData(self.model)
         self.ctrl = MujocoController(
             servo, self.joint_names, self.model, self.data, vin_drop_gain=0.1, vin_min=7.0
         )
-        self.feedback = SimFeedback(self.model, ROOT / "runtime")
+        self.feedback = SimFeedback(self.model, runtime_dir or ROOT / "runtime")
         self.actions = PolicyActions(self.feedback)
         self.home = np.deg2rad(self.feedback.core.HOME_DEG).astype(float)
         self.qpos_adr = self.ctrl.qpos_indexes
@@ -77,6 +84,9 @@ class DuckSitStandEnv(gym.Env):
         self.floor = self.model.geom("floor").id
         self.trunk = self.model.body("trunk_base").id
         self.soles = [self.model.geom(s + "_foot_collision").id for s in ("left", "right")]
+        self.carpet_pairs = ([self.model.pair(f"{s}_carpet").id for s in ("left", "right")]
+                             if surface == "residential-carpet" else None)
+        self.carpet_field = None
         self.dt = DT
         self.decimation = DECIMATION
         self.observation_space = spaces.Box(-np.inf, np.inf, (61,), np.float32)
@@ -103,15 +113,27 @@ class DuckSitStandEnv(gym.Env):
         self.material = self.surface if self.surface != "mixed" else rng.choice(["hard", "carpet"])
         soft = self.material == "carpet"
         m, d = self.model, self.data
-        # A compliant contact proxy for carpet; the user's carpet has not been measured.
-        tau = rng.uniform(0.035, 0.065) if soft else 0.015
-        mu = rng.uniform(0.55, 1.1) if soft else 0.75
+        if self.material in ("hardwood", "residential-carpet"):
+            # Isolate material sampling from initial pose, so a matched seed
+            # starts with the same physical perturbation across these surfaces.
+            surface_rng = np.random.default_rng(rng.integers(2**63))
+            if self.material == "hardwood":
+                tau, mu = surface_rng.uniform(.010, .014), surface_rng.uniform(.55, .80)
+                impedance = HARDWOOD_IMPEDANCE
+                self.contact_params = dict(tau_s=float(tau), friction=float(mu), solimp=list(impedance))
+            else:
+                self.carpet_field = CarpetField(surface_rng)
+                tau, mu = self.carpet_field.tau, self.carpet_field.mu
+                impedance = CARPET_IMPEDANCE
+                self.contact_params = self.carpet_field.describe()
+        else:
+            tau = rng.uniform(0.035, 0.065) if soft else 0.015
+            mu = rng.uniform(0.55, 1.1) if soft else 0.75
+            impedance = [0.70, 0.93, 0.004, 0.5, 2.0] if soft else [0.9, 0.95, 0.001, 0.5, 2.0]
+            self.contact_params = {"tau_s": float(tau), "friction": float(mu)}
         m.geom_solref[self.floor] = [tau, 1.0]
-        m.geom_solimp[self.floor] = (
-            [0.70, 0.93, 0.004, 0.5, 2.0] if soft else [0.9, 0.95, 0.001, 0.5, 2.0]
-        )
+        m.geom_solimp[self.floor] = impedance
         m.geom_friction[self.floor] = [mu, 0.005, 0.0001]
-        self.contact_params = {"tau_s": float(tau), "friction": float(mu)}
         mj.mj_resetDataKeyframe(m, d, m.key("STAND").id)
         # Training sit pose; the companion viewer's SIT key has a different head and knee pose.
         if pose == "sit":
@@ -141,6 +163,8 @@ class DuckSitStandEnv(gym.Env):
                 -np.sin(pitch / 2) * np.sin(roll / 2),
             ]
             d.qvel[3:5] = rng.normal(0.0, 0.025, 2)
+        if self.carpet_field is not None:
+            self._update_carpet()
         mj.mj_forward(m, d)
         dist = min(mj.mj_geomDistance(m, d, self.floor, g, 0.2, None) for g in self.soles)
         d.qpos[2] += 0.0005 - dist
@@ -168,6 +192,12 @@ class DuckSitStandEnv(gym.Env):
         action = np.asarray(action, dtype=np.float32)
         return self.advance(self.actions.targets(action), action)
 
+    def _update_carpet(self):
+        # Refresh positions for the current qpos before building this step's contacts.
+        # Explicit pairs leave the underlying plane and robot self contacts alone.
+        mj.mj_kinematics(self.model, self.data)
+        self.carpet_field.update_pairs(self.model, self.carpet_pairs, self.data.geom_xpos[self.soles, :2])
+
     def advance(self, target, action, sample_callback=None):
         d, m = self.data, self.model
         # Encoder travel spans roughly one revolution. MuJoCo enforces the mechanical stops.
@@ -176,6 +206,8 @@ class DuckSitStandEnv(gym.Env):
             self.ctrl.q_target[:] = self._delayed
             self._delayed = target
             self.ctrl.update()
+            if self.carpet_field is not None:
+                self._update_carpet()
             mj.mj_step(m, d)
             if i % 2 == 1:
                 mj.mj_forward(m, d)

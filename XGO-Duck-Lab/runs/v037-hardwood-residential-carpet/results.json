@@ -1,0 +1,1165 @@
+{
+  "nominal": {
+    "trials": 576,
+    "reached50": 96,
+    "falls": 0,
+    "stops": 576
+  },
+  "hardware_variation": {
+    "trials": 1152,
+    "falls": 0,
+    "stops": 1152
+  },
+  "mode_switches": {
+    "trials": 108,
+    "falls": 0,
+    "stops": 108
+  },
+  "hashes": {
+    "factory": {
+      "walk": "13a1fdce75906e7feee078fb1700f0227535ffe1d8ef571aad07bf4a610e2aa3",
+      "run": "b3504f78b6afdb3607da14b2952e07b52c2217242284ff808f3c4526c17cd013"
+    },
+    "5mm": {
+      "walk": "c22e470c3df194cfc63d1c5ea0b2ae3163ea603837a1c492d45a97a2991f1a90",
+      "run": "92306cf8e333b1b08e883d1f1ad184f94eb80d6b6bf320d66d116f13bf3635a0"
+    },
+    "10mm": {
+      "walk": "c4068bc932b10b1ad701cbbaa3912cdf39ddd48e2f027229a1e66015e8e0efd2",
+      "run": "f85993eb1880ec72fcb01f6f3318e2c5b0de5c33b567a171404c31064e3bd479"
+    }
+  },
+  "worst_nominal_coast_m": 0.08987141409483486,
+  "worst_nominal_settle_s": 0.84,
+  "worst_nominal_drift_m": 9.313013430672427,
+  "pairs": {
+    "factory/hardwood": {
+      "course": {
+        "3m": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 0.8378265816399179,
+            "rms_tilt": 1.315411714153158,
+            "peak_roll": 2.4310039923962115,
+            "peak_tilt": 4.986980166996102,
+            "mean_peak_drift": 0.11600412943316388,
+            "worst_peak_drift": 0.16460696479030063,
+            "worst_coast": 0.033549825172168084,
+            "worst_settle": 0.3,
+            "speed_mps": 0.23131095404270002,
+            "time_s": 12.97041963951789
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 1.2829533054725766,
+            "rms_tilt": 1.9030087483228353,
+            "peak_roll": 3.458450612163832,
+            "peak_tilt": 6.111330843980282,
+            "mean_peak_drift": 0.13992659710678695,
+            "worst_peak_drift": 0.20355857416413176,
+            "worst_coast": 0.055434693114535284,
+            "worst_settle": 0.41,
+            "speed_mps": 0.3466028005906717,
+            "time_s": 8.692504885553486
+          },
+          "gain_pct": 49.842795826560305
+        },
+        "50m": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 0.7969881126938411,
+            "rms_tilt": 1.2214887974349915,
+            "peak_roll": 2.546783470295256,
+            "peak_tilt": 4.443283260998863,
+            "mean_peak_drift": 4.694939629225205,
+            "worst_peak_drift": 7.197861716831856,
+            "worst_coast": 0.03237034875924411,
+            "worst_settle": 0.28,
+            "speed_mps": 0.23044236971915336,
+            "time_s": 216.9786327620345
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.2866240062440366,
+            "rms_tilt": 1.6739876745682305,
+            "peak_roll": 3.8531048900809473,
+            "peak_tilt": 6.046623691627969,
+            "mean_peak_drift": 2.607909137505917,
+            "worst_peak_drift": 4.916494243691552,
+            "worst_coast": 0.0554729280540649,
+            "worst_settle": 0.4,
+            "speed_mps": 0.3456563849653013,
+            "time_s": 144.81444677182395
+          },
+          "gain_pct": 49.99688876076156
+        },
+        "touch": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 0.9643760105089161,
+            "rms_tilt": 1.4097465330679997,
+            "peak_roll": 2.4061445535817207,
+            "peak_tilt": 3.389579548665406,
+            "mean_peak_drift": 0.05148182848290151,
+            "worst_peak_drift": 0.07959117175206464,
+            "worst_coast": 0.02887905750160476,
+            "worst_settle": 0.29,
+            "speed_mps": 0.18777756817683405,
+            "time_s": 15.978100391448356
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.2053824815567002,
+            "rms_tilt": 1.6272617047576552,
+            "peak_roll": 3.1550467612277013,
+            "peak_tilt": 5.239122072304642,
+            "mean_peak_drift": 0.11306950598858422,
+            "worst_peak_drift": 0.1978752700930318,
+            "worst_coast": 0.03917285017154223,
+            "worst_settle": 0.3,
+            "speed_mps": 0.29449584329746065,
+            "time_s": 10.220092261629278
+          },
+          "gain_pct": 56.83228095707777
+        },
+        "release": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 0.9273192192356378,
+            "rms_tilt": 1.535166712470362,
+            "peak_roll": 2.75043200636112,
+            "peak_tilt": 4.590532917023919,
+            "mean_peak_drift": 0.03759254262709045,
+            "worst_peak_drift": 0.08188620894743519,
+            "worst_coast": 0.03296280848285395,
+            "worst_settle": 0.35,
+            "speed_mps": 0.2240521496546147,
+            "time_s": null
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 1.5216792950584175,
+            "rms_tilt": 2.2737869618177147,
+            "peak_roll": 3.36525526643473,
+            "peak_tilt": 8.390168422041878,
+            "mean_peak_drift": 0.1010063843229909,
+            "worst_peak_drift": 0.21813977374591392,
+            "worst_coast": 0.07563818876190742,
+            "worst_settle": 0.67,
+            "speed_mps": 0.33679320099344195,
+            "time_s": null
+          },
+          "gain_pct": 50.31911164995384
+        }
+      },
+      "hardware_variation": {
+        "all": {
+          "walk": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.040740243880173915
+          },
+          "run": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.08061876132384072
+          }
+        },
+        "saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.03643516597982156
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.06741821235151
+          }
+        },
+        "no_saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.040740243880173915
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.08061876132384072
+          }
+        }
+      }
+    },
+    "factory/residential-carpet": {
+      "course": {
+        "3m": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 1.4592134939345,
+            "rms_tilt": 1.9113288114875624,
+            "peak_roll": 3.7393289400683374,
+            "peak_tilt": 5.432380365270352,
+            "mean_peak_drift": 0.04895847584149156,
+            "worst_peak_drift": 0.06596489123388584,
+            "worst_coast": 0.04756148908417642,
+            "worst_settle": 0.54,
+            "speed_mps": 0.24882857294227545,
+            "time_s": 12.057911358894563
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 2.0804219499114485,
+            "rms_tilt": 2.698926239198831,
+            "peak_roll": 6.063870333375761,
+            "peak_tilt": 8.396801226231556,
+            "mean_peak_drift": 0.05052278792241978,
+            "worst_peak_drift": 0.1031532375247806,
+            "worst_coast": 0.08266021961758506,
+            "worst_settle": 0.5,
+            "speed_mps": 0.40205693883755284,
+            "time_s": 7.470800922241384
+          },
+          "gain_pct": 61.57989176380645
+        },
+        "50m": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.5105853901966695,
+            "rms_tilt": 1.9322641140884405,
+            "peak_roll": 3.9615571140845107,
+            "peak_tilt": 5.008883317641148,
+            "mean_peak_drift": 2.7090463550728288,
+            "worst_peak_drift": 3.4959622091228097,
+            "worst_coast": 0.04940044675730371,
+            "worst_settle": 0.53,
+            "speed_mps": 0.24882159701397896,
+            "time_s": 200.9722854223836
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.9216928632746209,
+            "rms_tilt": 3.513673701737475,
+            "peak_roll": 13.608002192910101,
+            "peak_tilt": 18.527679731526046,
+            "mean_peak_drift": 1.4573004471066586,
+            "worst_peak_drift": 2.359302714456059,
+            "worst_coast": 0.07482025507952968,
+            "worst_settle": 0.47,
+            "speed_mps": 0.3647378449835351,
+            "time_s": 138.41635596171508
+          },
+          "gain_pct": 46.586087928309496
+        },
+        "touch": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.4220130283845733,
+            "rms_tilt": 1.8813329657904423,
+            "peak_roll": 3.8163928634741597,
+            "peak_tilt": 4.327764687053246,
+            "mean_peak_drift": 0.04025094517616275,
+            "worst_peak_drift": 0.05641363181532977,
+            "worst_coast": 0.03408637662165986,
+            "worst_settle": 0.39,
+            "speed_mps": 0.2051169725787685,
+            "time_s": 14.628158771745968
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.8939820217671122,
+            "rms_tilt": 2.556019363561733,
+            "peak_roll": 6.0876528578623095,
+            "peak_tilt": 6.832639038056888,
+            "mean_peak_drift": 0.05539905560143546,
+            "worst_peak_drift": 0.08990553495843416,
+            "worst_coast": 0.06251299888071038,
+            "worst_settle": 0.46,
+            "speed_mps": 0.350275474152153,
+            "time_s": 8.58216663220777
+          },
+          "gain_pct": 70.76864471448899
+        },
+        "release": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 1.2510635804160768,
+            "rms_tilt": 1.914718233794314,
+            "peak_roll": 3.7759637164793927,
+            "peak_tilt": 4.629643185517918,
+            "mean_peak_drift": 0.03958595584980918,
+            "worst_peak_drift": 0.05626506271039276,
+            "worst_coast": 0.05632311419714059,
+            "worst_settle": 0.46,
+            "speed_mps": 0.23635084884343133,
+            "time_s": null
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 1.9210220545125136,
+            "rms_tilt": 2.872458156586104,
+            "peak_roll": 7.578155550406087,
+            "peak_tilt": 18.012834708588176,
+            "mean_peak_drift": 0.04537118268482828,
+            "worst_peak_drift": 0.1200506698370162,
+            "worst_coast": 0.08987141409483486,
+            "worst_settle": 0.59,
+            "speed_mps": 0.3580859179954279,
+            "time_s": null
+          },
+          "gain_pct": 51.506085020510724
+        }
+      },
+      "hardware_variation": {
+        "all": {
+          "walk": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.0722299453964184
+          },
+          "run": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.11222441999707954
+          }
+        },
+        "saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.05520240105289781
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.11222441999707954
+          }
+        },
+        "no_saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.0722299453964184
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.11020924379455255
+          }
+        }
+      }
+    },
+    "5mm/hardwood": {
+      "course": {
+        "3m": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 1.161001846383982,
+            "rms_tilt": 2.0717279709018377,
+            "peak_roll": 3.3569017766708495,
+            "peak_tilt": 4.024456693127423,
+            "mean_peak_drift": 0.03340935575421619,
+            "worst_peak_drift": 0.07001287935298348,
+            "worst_coast": 0.037870848182067526,
+            "worst_settle": 0.32,
+            "speed_mps": 0.24645340474925231,
+            "time_s": 12.175541197371885
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 1.296958968419485,
+            "rms_tilt": 2.1319665594078225,
+            "peak_roll": 3.868143679052276,
+            "peak_tilt": 5.879783451647532,
+            "mean_peak_drift": 0.15273432311692278,
+            "worst_peak_drift": 0.2565383823800341,
+            "worst_coast": 0.0565333799273825,
+            "worst_settle": 0.34,
+            "speed_mps": 0.3438698853951463,
+            "time_s": 8.73889445471505
+          },
+          "gain_pct": 39.52734219476817
+        },
+        "50m": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.0816881733153465,
+            "rms_tilt": 2.1186376785658925,
+            "peak_roll": 3.0913353154667003,
+            "peak_tilt": 4.1971769938237955,
+            "mean_peak_drift": 1.6953995376926885,
+            "worst_peak_drift": 3.1553801877119394,
+            "worst_coast": 0.029911364462017788,
+            "worst_settle": 0.31,
+            "speed_mps": 0.24712346486484554,
+            "time_s": 202.38145131286143
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.327180142563486,
+            "rms_tilt": 2.2638700657711093,
+            "peak_roll": 3.975309563716332,
+            "peak_tilt": 7.207400507438112,
+            "mean_peak_drift": 2.171205989521622,
+            "worst_peak_drift": 3.8753311827776638,
+            "worst_coast": 0.04865961795810528,
+            "worst_settle": 0.32,
+            "speed_mps": 0.3440844402893661,
+            "time_s": 145.38403644801235
+          },
+          "gain_pct": 39.235843297013304
+        },
+        "touch": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.0405247863539502,
+            "rms_tilt": 1.9823648771116944,
+            "peak_roll": 2.7803792703207835,
+            "peak_tilt": 3.285120671277221,
+            "mean_peak_drift": 0.06755885051535669,
+            "worst_peak_drift": 0.2099765072139751,
+            "worst_coast": 0.030321660623734495,
+            "worst_settle": 0.29,
+            "speed_mps": 0.20028097538469633,
+            "time_s": 14.995264477092993
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.1620527446726743,
+            "rms_tilt": 1.5013566413187394,
+            "peak_roll": 3.51666221423199,
+            "peak_tilt": 4.7761319531791875,
+            "mean_peak_drift": 0.0981677787836684,
+            "worst_peak_drift": 0.16264206443520351,
+            "worst_coast": 0.042992819251645345,
+            "worst_settle": 0.29,
+            "speed_mps": 0.2781063863241289,
+            "time_s": 10.804773753148428
+          },
+          "gain_pct": 38.858114601223015
+        },
+        "release": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 1.2133279063843259,
+            "rms_tilt": 1.8734367981880318,
+            "peak_roll": 3.8538337892484202,
+            "peak_tilt": 4.2063322722951515,
+            "mean_peak_drift": 0.019095835689929022,
+            "worst_peak_drift": 0.02925873712009804,
+            "worst_coast": 0.037125477526938726,
+            "worst_settle": 0.31,
+            "speed_mps": 0.23437062384329685,
+            "time_s": null
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 1.356474710705813,
+            "rms_tilt": 2.162005870658347,
+            "peak_roll": 3.863989143028762,
+            "peak_tilt": 8.306934683080085,
+            "mean_peak_drift": 0.06250662396026008,
+            "worst_peak_drift": 0.12943481360801445,
+            "worst_coast": 0.06344651574382149,
+            "worst_settle": 0.53,
+            "speed_mps": 0.3292689584402462,
+            "time_s": null
+          },
+          "gain_pct": 40.49071212115712
+        }
+      },
+      "hardware_variation": {
+        "all": {
+          "walk": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.03913626596408189
+          },
+          "run": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.07418202075267526
+          }
+        },
+        "saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.03913626596408189
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.06509961868893012
+          }
+        },
+        "no_saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.03690640914933177
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.07418202075267526
+          }
+        }
+      }
+    },
+    "5mm/residential-carpet": {
+      "course": {
+        "3m": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 1.2587764588034112,
+            "rms_tilt": 1.8661650525646911,
+            "peak_roll": 5.119320289406039,
+            "peak_tilt": 5.9482013788049874,
+            "mean_peak_drift": 0.09915777473904609,
+            "worst_peak_drift": 0.1506139644720513,
+            "worst_coast": 0.05439701938953546,
+            "worst_settle": 0.59,
+            "speed_mps": 0.25519831204328114,
+            "time_s": 11.760123504103214
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 1.9743631750217996,
+            "rms_tilt": 3.2372361265042553,
+            "peak_roll": 8.43012595371389,
+            "peak_tilt": 12.962752347849518,
+            "mean_peak_drift": 0.05980168620305766,
+            "worst_peak_drift": 0.113453324611726,
+            "worst_coast": 0.08410577814657028,
+            "worst_settle": 0.67,
+            "speed_mps": 0.3734440512080084,
+            "time_s": 8.042224782897257
+          },
+          "gain_pct": 46.334843760515554
+        },
+        "50m": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.2399461746761302,
+            "rms_tilt": 1.8323903313250522,
+            "peak_roll": 4.6948844123765054,
+            "peak_tilt": 6.722702857315597,
+            "mean_peak_drift": 1.889197224834625,
+            "worst_peak_drift": 2.897313627519466,
+            "worst_coast": 0.05406545113634315,
+            "worst_settle": 0.57,
+            "speed_mps": 0.2567351877613551,
+            "time_s": 194.7614973694197
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 2.0041141671130154,
+            "rms_tilt": 3.5241871558650764,
+            "peak_roll": 9.0965235284883,
+            "peak_tilt": 13.424670225087722,
+            "mean_peak_drift": 0.7926458468325983,
+            "worst_peak_drift": 1.6329934639278167,
+            "worst_coast": 0.07534311220103412,
+            "worst_settle": 0.67,
+            "speed_mps": 0.37243650449552496,
+            "time_s": 134.40222324000683
+          },
+          "gain_pct": 45.06640392501182
+        },
+        "touch": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.208220626552659,
+            "rms_tilt": 1.7319277633484769,
+            "peak_roll": 3.9146459303975654,
+            "peak_tilt": 4.934269631717304,
+            "mean_peak_drift": 0.06509098681059883,
+            "worst_peak_drift": 0.11088727559234189,
+            "worst_coast": 0.03917855326376009,
+            "worst_settle": 0.43,
+            "speed_mps": 0.20963446251627033,
+            "time_s": 14.315396731869782
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.7701503254950435,
+            "rms_tilt": 2.841655543745782,
+            "peak_roll": 5.0049449926129554,
+            "peak_tilt": 6.396617009659718,
+            "mean_peak_drift": 0.0579415965882263,
+            "worst_peak_drift": 0.08423465145562584,
+            "worst_coast": 0.06158083004107072,
+            "worst_settle": 0.55,
+            "speed_mps": 0.3235559190829027,
+            "time_s": 9.275882169574873
+          },
+          "gain_pct": 54.34290488272681
+        },
+        "release": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 1.156865028587096,
+            "rms_tilt": 1.8620115658338574,
+            "peak_roll": 4.371992806111631,
+            "peak_tilt": 6.242516616095174,
+            "mean_peak_drift": 0.039958792169424,
+            "worst_peak_drift": 0.09819177350604996,
+            "worst_coast": 0.05623556087438991,
+            "worst_settle": 0.48,
+            "speed_mps": 0.23581618821408232,
+            "time_s": null
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 1.792129253458816,
+            "rms_tilt": 2.9922336860619154,
+            "peak_roll": 5.425028450943737,
+            "peak_tilt": 7.971111290649335,
+            "mean_peak_drift": 0.056125527484122764,
+            "worst_peak_drift": 0.13603449308402712,
+            "worst_coast": 0.07909130888569736,
+            "worst_settle": 0.56,
+            "speed_mps": 0.3560839348058641,
+            "time_s": null
+          },
+          "gain_pct": 51.00063210359351
+        }
+      },
+      "hardware_variation": {
+        "all": {
+          "walk": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.058282626991241065
+          },
+          "run": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.0833668380373945
+          }
+        },
+        "saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.058282626991241065
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.0820492520983511
+          }
+        },
+        "no_saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.05312526531418248
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.0833668380373945
+          }
+        }
+      }
+    },
+    "10mm/hardwood": {
+      "course": {
+        "3m": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 1.0544582507369817,
+            "rms_tilt": 1.382097389027992,
+            "peak_roll": 3.966466333517233,
+            "peak_tilt": 5.233731198597172,
+            "mean_peak_drift": 0.053516068198367545,
+            "worst_peak_drift": 0.08813998605733113,
+            "worst_coast": 0.03227759546036269,
+            "worst_settle": 0.28,
+            "speed_mps": 0.23290544392852436,
+            "time_s": 12.881580364579655
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 1.4160612126486087,
+            "rms_tilt": 2.284982608032779,
+            "peak_roll": 3.899217331671403,
+            "peak_tilt": 6.0076444104712525,
+            "mean_peak_drift": 0.18382158011017763,
+            "worst_peak_drift": 0.3230185183537737,
+            "worst_coast": 0.0580792488100675,
+            "worst_settle": 0.33,
+            "speed_mps": 0.3328051988448143,
+            "time_s": 9.032517432386626
+          },
+          "gain_pct": 42.89283806820241
+        },
+        "50m": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 0.985212996583578,
+            "rms_tilt": 1.281558652061209,
+            "peak_roll": 4.22152271871218,
+            "peak_tilt": 5.2110586181475735,
+            "mean_peak_drift": 5.328181470622144,
+            "worst_peak_drift": 7.734257889105062,
+            "worst_coast": 0.02900155702716898,
+            "worst_settle": 0.27,
+            "speed_mps": 0.233118356505557,
+            "time_s": 214.48978832117217
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.3276086470052044,
+            "rms_tilt": 2.095527430192042,
+            "peak_roll": 4.29245111419198,
+            "peak_tilt": 6.773226527599153,
+            "mean_peak_drift": 4.176155829307127,
+            "worst_peak_drift": 9.313013430672427,
+            "worst_coast": 0.054503627310426635,
+            "worst_settle": 0.31,
+            "speed_mps": 0.3192053574140574,
+            "time_s": 156.9007117479914
+          },
+          "gain_pct": 36.92845222441687
+        },
+        "touch": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 0.9837088913792169,
+            "rms_tilt": 1.3612117495647444,
+            "peak_roll": 3.0638957883485993,
+            "peak_tilt": 3.7160084869907077,
+            "mean_peak_drift": 0.03242989424786585,
+            "worst_peak_drift": 0.07027568738783985,
+            "worst_coast": 0.028599575160667724,
+            "worst_settle": 0.27,
+            "speed_mps": 0.18919433498021726,
+            "time_s": 15.857751592090004
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.1805104721424862,
+            "rms_tilt": 1.5121703320327131,
+            "peak_roll": 2.766602269928484,
+            "peak_tilt": 4.0901840417305095,
+            "mean_peak_drift": 0.14106843874835706,
+            "worst_peak_drift": 0.17763882752851415,
+            "worst_coast": 0.03450960511797418,
+            "worst_settle": 0.26,
+            "speed_mps": 0.2761155356465781,
+            "time_s": 10.882786343306275
+          },
+          "gain_pct": 45.94281360245252
+        },
+        "release": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 1.218131177059779,
+            "rms_tilt": 1.5674498563178862,
+            "peak_roll": 4.074868829027661,
+            "peak_tilt": 5.252571104534032,
+            "mean_peak_drift": 0.019867600558852994,
+            "worst_peak_drift": 0.04422715144295928,
+            "worst_coast": 0.028606125278075517,
+            "worst_settle": 0.32,
+            "speed_mps": 0.22419036130495007,
+            "time_s": null
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 1.390343484921577,
+            "rms_tilt": 2.0723704372856493,
+            "peak_roll": 3.423059997935366,
+            "peak_tilt": 7.6738504189938,
+            "mean_peak_drift": 0.1040330508284122,
+            "worst_peak_drift": 0.3401963716279233,
+            "worst_coast": 0.05071751403745088,
+            "worst_settle": 0.43,
+            "speed_mps": 0.3233857353458844,
+            "time_s": null
+          },
+          "gain_pct": 44.24604762825015
+        }
+      },
+      "hardware_variation": {
+        "all": {
+          "walk": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.03276362515447657
+          },
+          "run": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.0557522654056874
+          }
+        },
+        "saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.03276362515447657
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.05412057230681964
+          }
+        },
+        "no_saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.03193386828216066
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.0557522654056874
+          }
+        }
+      }
+    },
+    "10mm/residential-carpet": {
+      "course": {
+        "3m": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 1.3327032053431769,
+            "rms_tilt": 2.0457760981704585,
+            "peak_roll": 4.677140143073534,
+            "peak_tilt": 7.075586688141322,
+            "mean_peak_drift": 0.06825152983442767,
+            "worst_peak_drift": 0.2029652673459723,
+            "worst_coast": 0.05016049951387859,
+            "worst_settle": 0.53,
+            "speed_mps": 0.25363193139905715,
+            "time_s": 11.833428594354896
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 16,
+            "rms_roll": 2.355480884473883,
+            "rms_tilt": 4.2043467016564104,
+            "peak_roll": 6.342763738183967,
+            "peak_tilt": 8.346431464511229,
+            "mean_peak_drift": 0.0885980149678586,
+            "worst_peak_drift": 0.1793989800305207,
+            "worst_coast": 0.07752804251018543,
+            "worst_settle": 0.56,
+            "speed_mps": 0.3995116282147339,
+            "time_s": 7.530085690353706
+          },
+          "gain_pct": 57.51629773545896
+        },
+        "50m": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.3627172531230478,
+            "rms_tilt": 1.9653001878128975,
+            "peak_roll": 4.974555186397001,
+            "peak_tilt": 6.952566264024157,
+            "mean_peak_drift": 3.236433056977452,
+            "worst_peak_drift": 3.8952028531807987,
+            "worst_coast": 0.053661551697472144,
+            "worst_settle": 0.67,
+            "speed_mps": 0.2554125853761295,
+            "time_s": 195.7763506580256
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 2.4758570639632804,
+            "rms_tilt": 5.074055443776946,
+            "peak_roll": 6.616105293073686,
+            "peak_tilt": 9.725889971771913,
+            "mean_peak_drift": 2.3738875589682245,
+            "worst_peak_drift": 3.4395463258633594,
+            "worst_coast": 0.07559486081593769,
+            "worst_settle": 0.84,
+            "speed_mps": 0.3869022509251396,
+            "time_s": 129.26323607863924
+          },
+          "gain_pct": 51.48127894926313
+        },
+        "touch": {
+          "walk": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 1.3535863737824885,
+            "rms_tilt": 1.7745207235389608,
+            "peak_roll": 4.981262575993665,
+            "peak_tilt": 5.689066407090074,
+            "mean_peak_drift": 0.09132037022770982,
+            "worst_peak_drift": 0.24592543169232978,
+            "worst_coast": 0.03342651711225953,
+            "worst_settle": 0.4,
+            "speed_mps": 0.20431422459073711,
+            "time_s": 14.70223934628896
+          },
+          "run": {
+            "trials": 8,
+            "falls": 0,
+            "stops": 8,
+            "completed": 8,
+            "rms_roll": 2.063218859973532,
+            "rms_tilt": 3.7919302203317815,
+            "peak_roll": 5.228967160246158,
+            "peak_tilt": 7.214265471507915,
+            "mean_peak_drift": 0.10490459981528968,
+            "worst_peak_drift": 0.22406089199222093,
+            "worst_coast": 0.06878169854811013,
+            "worst_settle": 0.63,
+            "speed_mps": 0.3553307020697354,
+            "time_s": 8.449961276603737
+          },
+          "gain_pct": 73.91383433116327
+        },
+        "release": {
+          "walk": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 1.3106630516505713,
+            "rms_tilt": 2.343132308632478,
+            "peak_roll": 4.591058892673503,
+            "peak_tilt": 6.686524904144266,
+            "mean_peak_drift": 0.026964006588294644,
+            "worst_peak_drift": 0.06141444776581545,
+            "worst_coast": 0.04854392573593544,
+            "worst_settle": 0.46,
+            "speed_mps": 0.23942125208115927,
+            "time_s": null
+          },
+          "run": {
+            "trials": 16,
+            "falls": 0,
+            "stops": 16,
+            "completed": 0,
+            "rms_roll": 2.1567994155865753,
+            "rms_tilt": 3.5262862537969144,
+            "peak_roll": 8.019531619089582,
+            "peak_tilt": 10.2406331890658,
+            "mean_peak_drift": 0.06350186154211285,
+            "worst_peak_drift": 0.1772444345106041,
+            "worst_coast": 0.07372040187918606,
+            "worst_settle": 0.76,
+            "speed_mps": 0.3689045436930516,
+            "time_s": null
+          },
+          "gain_pct": 54.08178701195663
+        }
+      },
+      "hardware_variation": {
+        "all": {
+          "walk": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.06019860951616978
+          },
+          "run": {
+            "trials": 96,
+            "falls": 0,
+            "stops": 96,
+            "worst_coast": 0.10101684506493347
+          }
+        },
+        "saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.05940615546953113
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.10101684506493347
+          }
+        },
+        "no_saved_calibration": {
+          "walk": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.06019860951616978
+          },
+          "run": {
+            "trials": 48,
+            "falls": 0,
+            "stops": 48,
+            "worst_coast": 0.08142528287600855
+          }
+        }
+      }
+    }
+  }
+}

@@ -182,7 +182,7 @@ def evaluate(
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--foot", choices=FEET, default="upstream")
-    p.add_argument("--surface", choices=["hard", "carpet", "mixed"], default="hard")
+    p.add_argument("--surface", choices=["hard", "carpet", "mixed", "hardwood", "residential-carpet"], default="hard")
     p.add_argument("--start", choices=["stand", "sit", "mixed"], default="sit")
     p.add_argument("--policy", choices=["sitstand", "walk"], default="sitstand")
     p.add_argument(

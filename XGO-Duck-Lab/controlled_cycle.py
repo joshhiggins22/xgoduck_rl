@@ -96,7 +96,7 @@ if __name__ == "__main__":
         type=Path,
         default=ROOT / "runs/heel-cycle-descent/parameters.json",
     )
-    p.add_argument("--surface", choices=["hard", "carpet"], default="carpet")
+    p.add_argument("--surface", choices=["hard", "carpet", "hardwood", "residential-carpet"], default="carpet")
     p.add_argument("--episodes", type=int, default=12)
     p.add_argument("--seed", type=int, default=3500)
     p.add_argument("--sit-seconds", type=float, default=1.8)

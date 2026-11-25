@@ -93,7 +93,7 @@ def evaluate(policy, surface, seeds, handoff):
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--policy", type=Path, default=ROOT / "runs/heel-rise-bounded/rise.onnx")
-    p.add_argument("--surface", choices=["hard", "carpet"], default="carpet")
+    p.add_argument("--surface", choices=["hard", "carpet", "hardwood", "residential-carpet"], default="carpet")
     p.add_argument("--handoff", choices=["none", "timer", "pose"], default="none")
     p.add_argument("--seed", type=int, default=2610)
     p.add_argument("--episodes", type=int, default=12)
